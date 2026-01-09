@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<!-- Uploaded by user: Money Tips - estadisticas.html -->
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas Detalladas | Money Tips</title>
+    <meta name="robots" content="noindex"> <!-- No indexar para mantener exclusividad -->
+    
+    <!-- SEO SOCIAL (Open Graph) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pronosticosmoneytips.com/estadisticas.html">
+    <meta property="og:title" content="Estadísticas Detalladas | Money Tips">
+    <meta property="og:description" content="Historial completo verificado por Bet-Analytix.">
+    <meta property="og:image" content="social-share.jpg">
+
+    <!-- FAVICON -->
+    <link rel="icon" href="IMG_0782.PNG">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            darker: '#020617',
+                            accent: '#22c55e',
+                            accentHover: '#16a34a',
+                            gold: '#fbbf24',
+                        }
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Animación suave para el desplegable */
+        .accordion-content {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .accordion-content.open {
+            max-height: 1000px; /* Altura suficiente para el iframe */
+            opacity: 1;
+        }
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+        .chevron.rotate {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-brand-darker text-gray-100 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Contenido Principal -->
+    <main class="flex-grow p-4 md:p-8 max-w-7xl mx-auto w-full space-y-12">
+        
+        <div class="text-center py-8">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-2">Transparencia Total</h1>
+            <p class="text-gray-400 mb-6">Historial completo verificado por Bet-Analytix.</p>
+            
+            <!-- NUEVO TEXTO DESTACADO -->
+            <div class="bg-gray-800/50 border border-brand-accent/30 rounded-xl p-4 max-w-3xl mx-auto shadow-lg backdrop-blur-sm">
+                <p class="text-sm md:text-base text-gray-300 leading-relaxed">
+                    <i class="fa-solid fa-bell text-brand-accent mr-2 animate-pulse"></i>
+                    <strong>Consejo Pro:</strong> Crea tu cuenta gratuita en Bet-Analytix y haz clic en <span class="text-white font-bold bg-brand-accent/20 px-2 py-0.5 rounded border border-brand-accent/30">Follow</span> en la temporada en curso. De esta forma, recibirás una <strong>alerta inmediata por correo</strong> con cada nuevo pick para ser el primero en aprovechar la cuota.
+                </p>
+            </div>
+        </div>
+
+        <!-- Temporada 2025/26 (ACTUAL) - ABIERTA POR DEFECTO -->
+        <section class="space-y-2">
+            <button onclick="toggleAccordion('season-2526')" class="w-full flex items-center justify-between p-5 bg-gray-800 hover:bg-gray-700 rounded-xl border border-brand-accent/50 transition-all shadow-lg group cursor-pointer">
+                <div class="flex items-center gap-3">
+                    <span class="relative flex h-3 w-3">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                    </span>
+                    <h2 class="text-xl md:text-2xl font-bold text-white group-hover:text-brand-accent transition-colors">Temporada 2025/26 (En Curso)</h2>
+                </div>
+                <i id="icon-season-2526" class="fa-solid fa-chevron-down text-gray-400 chevron rotate"></i>
+            </button>
+            
+            <div id="season-2526" class="accordion-content open">
+                <div class="w-full h-[600px] bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 shadow-2xl relative mt-2">
+                    <div class="absolute inset-0 flex items-center justify-center -z-10"><i class="fa-solid fa-spinner fa-spin text-2xl text-gray-600"></i></div>
+                    <iframe src="https://app.bet-analytix.com/bankroll/1677690" class="w-full h-full border-0" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Temporada 2024/25 -->
+        <section class="space-y-2">
+            <button onclick="toggleAccordion('season-2425')" class="w-full flex items-center justify-between p-5 bg-gray-800 hover:bg-gray-700 rounded-xl border border-gray-700 hover:border-gray-600 transition-all shadow-lg group cursor-pointer">
+                <h2 class="text-xl font-bold text-gray-300 border-l-4 border-brand-accent pl-3 group-hover:text-white transition-colors">Temporada 2024/25</h2>
+                <i id="icon-season-2425" class="fa-solid fa-chevron-down text-gray-400 chevron"></i>
+            </button>
+            
+            <div id="season-2425" class="accordion-content">
+                <div class="w-full h-[500px] bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 shadow-lg relative mt-2">
+                    <div class="absolute inset-0 flex items-center justify-center -z-10"><i class="fa-solid fa-spinner fa-spin text-2xl text-gray-600"></i></div>
+                    <iframe src="https://app.bet-analytix.com/bankroll/1424910" class="w-full h-full border-0" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Temporada 2023/24 -->
+        <section class="space-y-2">
+            <button onclick="toggleAccordion('season-2324')" class="w-full flex items-center justify-between p-5 bg-gray-800 hover:bg-gray-700 rounded-xl border border-gray-700 hover:border-gray-600 transition-all shadow-lg group cursor-pointer">
+                <h2 class="text-xl font-bold text-gray-300 border-l-4 border-gray-600 pl-3 group-hover:text-white transition-colors">Temporada 2023/24</h2>
+                <i id="icon-season-2324" class="fa-solid fa-chevron-down text-gray-400 chevron"></i>
+            </button>
+            
+            <div id="season-2324" class="accordion-content">
+                <div class="w-full h-[500px] bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 shadow-lg relative mt-2">
+                    <div class="absolute inset-0 flex items-center justify-center -z-10"><i class="fa-solid fa-spinner fa-spin text-2xl text-gray-600"></i></div>
+                    <iframe src="https://app.bet-analytix.com/bankroll/974773" class="w-full h-full border-0" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Histórico Detallado -->
+        <section class="space-y-2">
+            <button onclick="toggleAccordion('history')" class="w-full flex items-center justify-between p-5 bg-gray-800 hover:bg-gray-700 rounded-xl border border-brand-gold/30 hover:border-brand-gold/50 transition-all shadow-lg group cursor-pointer">
+                <h2 class="text-xl font-bold text-brand-gold border-l-4 border-brand-gold pl-3">Histórico Global</h2>
+                <i id="icon-history" class="fa-solid fa-chevron-down text-brand-gold chevron"></i>
+            </button>
+            
+            <div id="history" class="accordion-content">
+                <div class="w-full h-[600px] bg-gray-900 rounded-2xl overflow-hidden border border-brand-gold/30 shadow-lg relative mt-2">
+                    <div class="absolute inset-0 flex items-center justify-center -z-10"><i class="fa-solid fa-spinner fa-spin text-2xl text-gray-600"></i></div>
+                    <iframe src="https://app.bet-analytix.com/bankroll/1677701" class="w-full h-full border-0" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer de Navegación -->
+    <footer class="bg-gray-900 border-t border-gray-800 sticky bottom-0 z-50 backdrop-blur-lg bg-opacity-90 py-6">
+        <div class="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row gap-4 justify-center items-center">
+            
+            <!-- Botón VOLVER AL INICIO -->
+            <a href="index.html" class="w-full sm:w-auto px-8 py-3 bg-gray-800 hover:bg-gray-700 text-white font-semibold rounded-xl transition-colors text-center border border-gray-700 flex items-center justify-center gap-2 cursor-pointer">
+                <i class="fa-solid fa-arrow-left"></i> Volver al Inicio
+            </a>
+
+            <!-- Botón VER PLANES PREMIUM -->
+            <a href="index.html#premium" class="w-full sm:w-auto px-8 py-3 bg-brand-accent hover:bg-brand-accentHover text-brand-darker font-bold rounded-xl transition-all shadow-[0_0_15px_rgba(34,197,94,0.3)] hover:shadow-[0_0_25px_rgba(34,197,94,0.5)] text-center flex items-center justify-center gap-2 cursor-pointer">
+                <i class="fa-solid fa-crown"></i> Ver Planes Premium
+            </a>
+
+        </div>
+    </footer>
+
+    <!-- LÓGICA DE LOS ACORDEONES -->
+    <script>
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            
+            if (content.classList.contains('open')) {
+                // Cerrar
+                content.classList.remove('open');
+                icon.classList.remove('rotate');
+            } else {
+                // Abrir
+                content.classList.add('open');
+                icon.classList.add('rotate');
+            }
+        }
+    </script>
+
+</body>
+</html>

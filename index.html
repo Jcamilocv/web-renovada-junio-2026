@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<!-- Uploaded by user: Money Tips - index.html -->
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Básico -->
+    <title>Money Tips | Tipster Profesional y Apuestas Deportivas Rentables</title>
+    <meta name="description" content="Maximiza tus beneficios en apuestas deportivas con Money Tips. Pronósticos verificados, Yield positivo y acceso a Betting Tracker profesional.">
+    <meta name="keywords" content="apuestas deportivas, tipster, pronósticos futbol, betting tracker, yield, dinero apuestas">
+    <meta name="author" content="Money Tips Premium">
+
+    <!-- SEO SOCIAL (Open Graph) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pronosticosmoneytips.com/">
+    <meta property="og:title" content="Money Tips | Invierte en Deporte Sin Azar">
+    <meta property="og:description" content="Únete al canal premium. Estadísticas verificadas y rentabilidad demostrada. Deja de regalar dinero a las bookies.">
+    <meta property="og:image" content="social-share.jpg"> 
+
+    <!-- FAVICON -->
+    <link rel="icon" href="IMG_0782.PNG">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome (6.5.1) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a', // Slate 900
+                            darker: '#020617', // Slate 950
+                            primary: '#3b82f6', // Blue 500
+                            accent: '#22c55e', // Green 500 (Vibrant Money Green)
+                            accentHover: '#16a34a',
+                            gold: '#fbbf24', // Amber 400 (Premium/Gold)
+                            goldDark: '#d97706',
+                            orange: '#f59e0b'
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* FONDO HERO */
+        .hero-bg {
+            /* use site logo as subtle integrated hero background */
+            background-image: linear-gradient(rgba(2,6,23,0.85), rgba(15,23,42,0.95)), url('IMG_0782.PNG'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+        }
+        body.modal-open {
+            overflow: hidden;
+        }
+        .custom-modal {
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .custom-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-gray-100 font-sans antialiased selection:bg-brand-accent selection:text-brand-darker flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-brand-dark/95 border-b border-gray-800 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer hover:opacity-80 transition-opacity gap-3" onclick="window.location.href='index.html'">
+                    <!-- IMAGEN LOGO NUEVA (TRANSPARENTE) -->
+                    <img src="IMG_0782.PNG" alt="Money Tips Logo" class="h-12 w-auto">
+                    <span class="font-bold text-2xl tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-emerald-300 text-glow">MoneyTips</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-6">
+                    <a href="#inicio" class="text-sm font-medium hover:text-brand-accent transition-colors">Inicio</a>
+                    <a href="#stats" class="text-sm font-medium hover:text-brand-accent transition-colors">Resultados</a>
+                    <a href="#tools" class="text-sm font-medium hover:text-brand-accent transition-colors">Tracker</a>
+                    <a href="blog.html" class="text-sm font-medium hover:text-brand-accent transition-colors">Blog</a>
+                    <a href="#testimonials" class="text-sm font-medium hover:text-brand-accent transition-colors">Comunidad</a>
+                    
+                    <!-- Social Icons -->
+                    <div class="flex items-center space-x-4 border-l border-gray-700 pl-6 mx-2">
+                        <a href="https://t.me/canalmoneytips" target="_blank" class="text-gray-400 hover:text-blue-400 transition-colors" title="Telegram"><i class="fa-brands fa-telegram text-xl"></i></a>
+                        <a href="https://www.instagram.com/money_tips_premium/" target="_blank" class="text-gray-400 hover:text-pink-500 transition-colors" title="Instagram"><i class="fa-brands fa-instagram text-xl"></i></a>
+                        <a href="https://www.threads.com/@money_tips_premium?invite=0" target="_blank" class="text-gray-400 hover:text-white transition-colors" title="Threads"><i class="fa-brands fa-threads text-xl"></i></a>
+                        <a href="javascript:void(0)" class="text-gray-400 hover:text-white transition-colors cursor-default" title="Próximamente"><i class="fa-brands fa-x-twitter text-xl"></i></a>
+                        <a href="https://youtube.com/@moneytipsoficial?si=hJXpdAGxHUukwsgX" target="_blank" class="text-gray-400 hover:text-red-500 transition-colors" title="YouTube"><i class="fa-brands fa-youtube text-xl"></i></a>
+                    </div>
+
+                    <a href="#premium" class="bg-brand-accent hover:bg-brand-accentHover text-brand-darker px-5 py-2.5 rounded-lg text-sm font-bold transition-all shadow-[0_0_15px_rgba(34,197,94,0.3)] hover:shadow-[0_0_20px_rgba(34,197,94,0.5)] transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-crown mr-2"></i>Premium
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex lg:hidden">
+                    <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="hidden lg:hidden bg-brand-dark border-b border-gray-800" id="mobile-menu">
+            <div class="px-4 pt-4 pb-6 space-y-2">
+                <a href="#inicio" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Inicio</a>
+                <a href="#stats" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Resultados</a>
+                <a href="#tools" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Tracker</a>
+                <a href="blog.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+                <a href="#premium" class="text-brand-accent hover:text-white block px-3 py-2 rounded-md text-base font-bold bg-gray-800/50 mt-4">💎 Acceso Premium</a>
+                
+                <div class="flex gap-6 px-3 py-4 mt-2 border-t border-gray-800 justify-center">
+                    <a href="https://t.me/canalmoneytips" target="_blank" class="text-blue-400"><i class="fa-brands fa-telegram text-2xl"></i></a>
+                    <a href="https://www.instagram.com/money_tips_premium/" target="_blank" class="text-pink-500"><i class="fa-brands fa-instagram text-2xl"></i></a>
+                    <a href="https://www.threads.com/@money_tips_premium?invite=0" target="_blank" class="text-white"><i class="fa-brands fa-threads text-2xl"></i></a>
+                    <a href="javascript:void(0)" class="text-white cursor-default" title="Próximamente"><i class="fa-brands fa-x-twitter text-2xl"></i></a>
+                    <a href="https://youtube.com/@moneytipsoficial?si=hJXpdAGxHUukwsgX" target="_blank" class="text-red-500"><i class="fa-brands fa-youtube text-2xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-bg min-h-screen flex items-center pt-24 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <!-- Left Side -->
+                <div class="w-full md:w-1/2 text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-green-900/50 border border-green-500/30 text-green-400 text-sm font-bold uppercase tracking-wider">
+                        Temporada 2025/26 Activa
+                    </div>
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-6 tracking-tight">
+                        Análisis Deportivo <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-emerald-400 text-glow">Profesional</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto md:mx-0 font-light leading-relaxed">
+                        Maximiza tus resultados con el análisis de un experto y sus pronósticos verificados. Deja de regalar dinero a las casas de apuestas y únete a la inversión inteligente.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <a href="#premium" class="px-8 py-4 bg-brand-accent hover:bg-brand-accentHover text-brand-darker font-bold rounded-xl transition-all transform hover:scale-105 shadow-[0_4px_20px_rgba(34,197,94,0.4)] text-center text-lg">
+                            Empezar a Ganar
+                        </a>
+                        <a href="https://t.me/canalmoneytips" target="_blank" class="px-8 py-4 bg-gray-800/50 hover:bg-blue-600/20 border border-gray-600 hover:border-blue-500 text-white font-semibold rounded-xl transition-all text-center flex items-center justify-center gap-2 backdrop-blur-sm group">
+                            <i class="fa-brands fa-telegram text-blue-400 group-hover:text-white transition-colors"></i> Canal Gratuito
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Right Side: IFRAME -->
+                <div class="w-full md:w-1/2 flex flex-col items-center perspective-1000 gap-4">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-900/80 border border-gray-700 backdrop-blur-sm text-xs text-gray-300 shadow-lg z-10">
+                        <span class="relative flex h-2 w-2">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                        </span>
+                        Actualización en Tiempo Real
+                    </div>
+
+                    <div class="w-full max-w-md h-[450px] bg-gray-900 rounded-3xl overflow-hidden shadow-2xl border border-gray-700/50 relative group hover:scale-[1.01] transition-transform duration-500">
+                        <div class="absolute inset-0 flex items-center justify-center bg-gray-900 -z-10">
+                            <i class="fa-solid fa-circle-notch fa-spin text-brand-accent text-3xl"></i>
+                        </div>
+                        <iframe 
+                            src="https://app.bet-analytix.com/balancesheet/13126" 
+                            class="w-full h-full border-0" 
+                            title="Estadísticas Money Tips"
+                            loading="lazy"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="py-24 bg-brand-darker border-y border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">Números, no promesas</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg">
+                    La transparencia es nuestro mayor activo. Historial verificado y actualizado jornada tras jornada.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Stat 1 -->
+                <div class="bg-gradient-to-b from-gray-800 to-brand-dark p-8 rounded-2xl border border-gray-700 shadow-xl relative overflow-hidden group hover:border-brand-accent transition-all hover:shadow-[0_0_30px_rgba(34,197,94,0.15)] transform hover:-translate-y-1">
+                    <div class="absolute top-0 right-0 bg-brand-accent text-brand-darker text-xs font-bold px-3 py-1 rounded-bl-lg z-10">RÉCORD</div>
+                    <div class="text-5xl font-bold text-gray-700 group-hover:text-white transition-colors mb-4 opacity-50">01</div>
+                    <div class="text-2xl font-bold text-white mb-2">2023/24</div>
+                    <div class="h-1 w-12 bg-brand-accent mb-4"></div>
+                    <p class="text-gray-400">
+                        Una temporada histórica cimentada en dos estrategias ganadoras: apuestas de sistema y análisis exhaustivo. Más de 741 picks compartidos avalan nuestro éxito.
+                    </p>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="bg-gradient-to-b from-gray-800 to-brand-dark p-8 rounded-2xl border border-gray-700 shadow-xl relative overflow-hidden group hover:border-brand-accent transition-all hover:shadow-[0_0_30px_rgba(34,197,94,0.15)] transform hover:-translate-y-1">
+                    <div class="text-5xl font-bold text-gray-700 group-hover:text-white transition-colors mb-4 opacity-50">02</div>
+                    <div class="text-2xl font-bold text-white mb-2">2024/25</div>
+                    <div class="h-1 w-12 bg-brand-accent mb-4"></div>
+                    <p class="text-gray-400">
+                        Consolidación de un modelo analítico exhaustivo con un Yield sostenido superior al 9% en mercados líquidos, permitiendo operar con entradas fuertes.
+                    </p>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="bg-gradient-to-b from-gray-800 to-brand-dark p-8 rounded-2xl border border-gray-700 shadow-xl relative overflow-hidden group hover:border-brand-accent transition-all hover:shadow-[0_0_30px_rgba(34,197,94,0.15)] transform hover:-translate-y-1">
+                    <div class="text-5xl font-bold text-gray-700 group-hover:text-white transition-colors mb-4 opacity-50">03</div>
+                    <div class="text-2xl font-bold text-white mb-2">Actualidad</div>
+                    <div class="h-1 w-12 bg-brand-accent mb-4"></div>
+                    <p class="text-gray-400">
+                        La racha continúa. Únete ahora y no te pierdas el resto de la temporada 2025/26.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <a href="estadisticas.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-brand-darker font-bold rounded-xl transition-all shadow-[0_0_10px_rgba(34,197,94,0.1)] hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] group text-lg">
+                    Ver estadísticas completas y detalladas
+                    <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tool Section -->
+    <section id="tools" class="py-24 bg-brand-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-16">
+            <div class="w-full md:w-1/2">
+                <div class="inline-block bg-brand-primary/10 text-brand-primary px-3 py-1 rounded text-xs font-bold uppercase mb-4">Próximamente 2.0</div>
+                <h2 class="text-3xl font-bold mb-6">BetTracker Profesional</h2>
+                <p class="text-gray-400 mb-6 text-lg leading-relaxed">
+                    Estamos desarrollando la herramienta definitiva para el apostador profesional. Una WebApp independiente donde podrás registrar tus picks, analizar tu yield y compararte con el mercado.
+                </p>
+                <div class="grid grid-cols-2 gap-4 mb-8">
+                    <div class="flex items-center gap-3 text-gray-300">
+                        <div class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center text-brand-accent"><i class="fa-solid fa-chart-pie"></i></div>
+                        <span class="text-sm">Gráficos Avanzados</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-gray-300">
+                        <div class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center text-brand-accent"><i class="fa-solid fa-mobile-screen"></i></div>
+                        <span class="text-sm">App Móvil (PWA)</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-gray-300">
+                        <div class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center text-brand-accent"><i class="fa-solid fa-file-export"></i></div>
+                        <span class="text-sm">Exportación Excel</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-gray-300">
+                        <div class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center text-brand-accent"><i class="fa-solid fa-robot"></i></div>
+                        <span class="text-sm">IA Predictiva (Beta)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2">
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-brand-accent to-blue-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                    <div class="relative bg-gray-900 ring-1 ring-gray-800 rounded-xl leading-none flex items-top justify-start space-x-6">
+                        <div class="w-full p-6">
+                            <div class="flex items-center justify-between mb-8 border-b border-gray-800 pb-4">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                    <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                    <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                </div>
+                                <span class="text-xs text-gray-500 font-mono">dashboard.moneytips.app</span>
+                            </div>
+                            <div class="flex items-end space-x-2 h-40 mb-4">
+                                <div class="w-1/6 bg-gray-800 h-1/4 rounded-t"></div>
+                                <div class="w-1/6 bg-gray-800 h-2/4 rounded-t"></div>
+                                <div class="w-1/6 bg-brand-accent/50 h-3/4 rounded-t"></div>
+                                <div class="w-1/6 bg-brand-accent h-full rounded-t shadow-[0_0_15px_rgba(34,197,94,0.5)]"></div>
+                                <div class="w-1/6 bg-brand-accent/80 h-5/6 rounded-t"></div>
+                                <div class="w-1/6 bg-brand-accent/90 h-4/6 rounded-t"></div>
+                            </div>
+                            <div class="flex justify-between text-xs text-gray-500 font-mono">
+                                <span>ENE</span>
+                                <span>FEB</span>
+                                <span>MAR</span>
+                                <span>ABR</span>
+                                <span>MAY</span>
+                                <span>JUN</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials / Social Proof -->
+    <section id="testimonials" class="py-20 bg-brand-dark relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Lo que dice la comunidad</h2>
+                <div class="flex justify-center gap-1 text-yellow-400 text-sm mb-2">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-gray-400">Más de 1.500 miembros ya están rentabilizando su pasión.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">JM</div>
+                        <div>
+                            <div class="font-bold text-sm">Juan M.</div>
+                            <div class="text-xs text-gray-500">Miembro desde 2023</div>
+                        </div>
+                        <i class="fa-brands fa-twitter text-gray-600 ml-auto"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm italic">"Llevaba años perdiendo dinero con combinadas absurdas. Con Money Tips aprendí a gestionar el bank y ahora pago mis vacaciones con esto."</p>
+                </div>
+                 <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">AG</div>
+                        <div>
+                            <div class="font-bold text-sm">Alberto G.</div>
+                            <div class="text-xs text-gray-500">Premium Anual</div>
+                        </div>
+                        <i class="fa-brands fa-telegram text-gray-600 ml-auto"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm italic">"Increíble la profundidad de los análisis. No te sueltan el pick y ya, te explican cada variable, estadística y factor clave. Invertir con esa información es otro mundo."</p>
+                </div>
+                 <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold">DR</div>
+                        <div>
+                            <div class="font-bold text-sm">David R.</div>
+                            <div class="text-xs text-gray-500">Miembro desde 2024</div>
+                        </div>
+                        <i class="fa-brands fa-instagram text-gray-600 ml-auto"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm italic">"Transparencia total. Si se falla se dice, y si se gana se celebra. Nada de borrar picks como otros. 100% recomendados."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="premium" class="py-24 bg-gradient-to-b from-brand-dark to-brand-darker relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-accent/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-brand-accent font-bold tracking-widest uppercase text-xs mb-2 block">Únete al Club</span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Planes de Acceso</h2>
+                <p class="text-xl text-gray-400">Elige tu nivel de compromiso. Empieza hoy mismo.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-end max-w-6xl mx-auto">
+                
+                <!-- Plan 1: Free -->
+                <div class="bg-gray-800 rounded-2xl p-8 border border-gray-700 flex flex-col relative h-[500px] hover:border-gray-500 transition-colors w-full">
+                    <h3 class="text-xl font-bold text-gray-300 mb-2">Vía Registro</h3>
+                    <div class="text-4xl font-bold text-white mb-4">0€ <span class="text-sm font-normal text-gray-400">/ temp</span></div>
+                    <p class="text-sm text-gray-400 mb-6 pb-6 border-b border-gray-700">Ideal si quieres probar el servicio sin pagar directamente.</p>
+                    
+                    <ul class="space-y-4 mb-8 flex-1 text-sm">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-gray-500 mt-1 mr-3"></i> <span>Registro en casa de apuestas</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-gray-500 mt-1 mr-3"></i> <span>Acceso a Picks Premium</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-gray-500 mt-1 mr-3"></i> <span>Acceso Básico al Tracker</span></li>
+                    </ul>
+
+                    <button onclick="toggleModal('free-access-modal')" class="w-full py-3 bg-gray-700 hover:bg-gray-600 text-white font-bold rounded-lg transition-colors border border-gray-600 cursor-pointer">
+                        Acceder Gratis
+                    </button>
+                    <p class="text-center text-[10px] text-gray-500 mt-3">Requiere registro y depósito.</p>
+                </div>
+
+                <!-- Plan 2: Monthly -->
+                <div class="bg-gray-800 rounded-2xl p-8 border border-gray-700 flex flex-col relative h-[520px] hover:border-brand-primary transition-colors shadow-lg w-full">
+                    <h3 class="text-xl font-bold text-white mb-2">Mensual</h3>
+                    <div class="text-4xl font-bold text-white mb-4">15€ <span class="text-sm font-normal text-gray-400">/ mes</span></div>
+                    <p class="text-sm text-gray-400 mb-6 pb-6 border-b border-gray-700">Flexibilidad total. Cancela cuando quieras.</p>
+                    
+                    <ul class="space-y-4 mb-8 flex-1 text-sm">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-blue-500 mt-1 mr-3"></i> <span>Acceso inmediato</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-blue-500 mt-1 mr-3"></i> <span>Sin registros extra</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-blue-500 mt-1 mr-3"></i> <span>Todos los Picks Premium</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-blue-500 mt-1 mr-3"></i> <span>Soporte estándar</span></li>
+                    </ul>
+
+                    <a href="https://premiumpay.pro/5731/moneytipspremium2526" class="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg transition-colors text-center shadow-lg shadow-blue-900/20">
+                        Elegir Mensual
+                    </a>
+                </div>
+
+                <!-- Plan 3: Season -->
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 rounded-2xl p-1 border-2 border-brand-gold flex flex-col relative h-[560px] transform md:-translate-y-4 z-10 gold-glow w-full">
+                    <div class="bg-brand-gold text-brand-darker font-bold text-center text-xs py-1 rounded-t-xl uppercase tracking-wider">
+                        Recomendado - Oferta Top
+                    </div>
+                    <div class="p-8 flex flex-col h-full">
+                        <h3 class="text-2xl font-bold text-white mb-2 flex items-center gap-2">
+                            Temporada <i class="fa-solid fa-crown text-brand-gold text-sm"></i>
+                        </h3>
+                        <div class="flex items-baseline mb-1 gap-2">
+                            <span class="text-5xl font-extrabold text-brand-gold">70€</span>
+                            <span class="text-sm font-bold text-gray-500 line-through">150€</span>
+                        </div>
+                        <p class="text-green-400 text-xs font-bold mb-6">Ahorras más del 50% vs mensual</p>
+                        <div class="h-px w-full bg-gray-700 mb-6"></div>
+                        
+                        <ul class="space-y-4 mb-8 flex-1 text-sm font-medium">
+                            <li class="flex items-start"><i class="fa-solid fa-check text-brand-gold mt-1 mr-3"></i> <span class="text-white">Pago Único (Hasta Junio 2026)</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-brand-gold mt-1 mr-3"></i> <span class="text-white">Acceso Prioritario a Picks</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-brand-gold mt-1 mr-3"></i> <span>Betting Tracker PRO Incluido</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-brand-gold mt-1 mr-3"></i> <span>Canal Privado Telegram</span></li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-brand-gold mt-1 mr-3"></i> <span>Asesoramiento Personal</span></li>
+                        </ul>
+
+                        <a href="https://premiumpay.pro/5731/moneytipspremium2526" class="w-full py-4 bg-brand-gold hover:bg-yellow-400 text-brand-darker font-extrabold rounded-xl transition-all shadow-[0_0_20px_rgba(251,191,36,0.4)] hover:shadow-[0_0_30px_rgba(251,191,36,0.6)] text-center text-lg uppercase tracking-wide flex justify-center items-center gap-2">
+                            Obtener Oferta Top <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <p class="text-center text-[10px] text-gray-500 mt-3">Plazas limitadas para esta oferta.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section (NUEVO) -->
+    <section id="why-us" class="py-24 bg-brand-darker relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-brand-accent font-bold tracking-widest uppercase text-xs mb-2 block">Money Tips</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-white">¿Por qué elegirnos?</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Transparencia -->
+                <div class="bg-gray-900/50 p-8 rounded-2xl border border-gray-800 hover:border-blue-500/50 transition-all hover:-translate-y-1 group">
+                    <div class="w-12 h-12 bg-blue-900/30 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-900/50 transition-colors">
+                        <i class="fa-solid fa-magnifying-glass-chart text-blue-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Transparencia</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Resultados 100% verificables y públicos. Sin trampa ni cartón.
+                    </p>
+                </div>
+
+                <!-- Exclusividad -->
+                <div class="bg-gray-900/50 p-8 rounded-2xl border border-gray-800 hover:border-purple-500/50 transition-all hover:-translate-y-1 group">
+                    <div class="w-12 h-12 bg-purple-900/30 rounded-lg flex items-center justify-center mb-6 group-hover:bg-purple-900/50 transition-colors">
+                        <i class="fa-solid fa-lock text-purple-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Exclusividad</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Acceso a picks premium y análisis protegidos por contraseña.
+                    </p>
+                </div>
+
+                <!-- Comunidad -->
+                <div class="bg-gray-900/50 p-8 rounded-2xl border border-gray-800 hover:border-green-500/50 transition-all hover:-translate-y-1 group">
+                    <div class="w-12 h-12 bg-green-900/30 rounded-lg flex items-center justify-center mb-6 group-hover:bg-green-900/50 transition-colors">
+                        <i class="fa-solid fa-users text-green-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Comunidad</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Únete a un grupo selecto de apostadores que buscan rentabilidad.
+                    </p>
+                </div>
+
+                <!-- Rentabilidad -->
+                <div class="bg-gray-900/50 p-8 rounded-2xl border border-gray-800 hover:border-yellow-500/50 transition-all hover:-translate-y-1 group">
+                    <div class="w-12 h-12 bg-yellow-900/30 rounded-lg flex items-center justify-center mb-6 group-hover:bg-yellow-900/50 transition-colors">
+                        <i class="fa-solid fa-sack-dollar text-yellow-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Rentabilidad</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Estrategias probadas para maximizar beneficios y gestión de bank.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-16 border-t border-gray-900 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <img src="IMG_0782.PNG" alt="Logo" class="h-9 w-auto">
+                        <span class="font-bold text-xl text-white">Money<span class="text-brand-accent">Tips</span></span>
+                    </div>
+                    <p class="text-gray-500 text-sm max-w-sm leading-relaxed mb-6">
+                        Somos más que un canal de apuestas. Somos una herramienta de inversión financiera aplicada al deporte. Únete a la élite.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://t.me/canalmoneytips" target="_blank" class="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition-all"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/money_tips_premium/" target="_blank" class="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:bg-pink-600 hover:text-white transition-all"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.threads.com/@money_tips_premium?invite=0" target="_blank" class="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:bg-white hover:text-black transition-all"><i class="fa-brands fa-threads"></i></a>
+                        <a href="javascript:void(0)" class="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:bg-white hover:text-black transition-all cursor-default" title="Próximamente"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://youtube.com/@moneytipsoficial?si=hJXpdAGxHUukwsgX" target="_blank" class="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:bg-red-600 hover:text-white transition-all"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Enlaces Rápidos</h4>
+                    <ul class="space-y-3 text-gray-500 text-sm">
+                        <li><a href="#inicio" class="hover:text-brand-accent transition-colors">Inicio</a></li>
+                        <li><a href="#stats" class="hover:text-brand-accent transition-colors">Estadísticas</a></li>
+                        <li><a href="blog.html" class="hover:text-brand-accent transition-colors">Blog</a></li>
+                        <li><a href="#premium" class="hover:text-brand-accent transition-colors font-bold text-gray-300">Plan Premium</a></li>
+                        <li><a href="avisolegal.html" class="hover:text-brand-accent transition-colors">Aviso Legal</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Contacto</h4>
+                    <ul class="space-y-3 text-gray-500 text-sm">
+                        <li class="flex items-center"><i class="fa-regular fa-envelope w-6 text-brand-accent"></i> moneytspremium@gmail.com</li>
+                        <li class="flex items-center"><i class="fa-brands fa-telegram w-6 text-brand-accent"></i> @Money_Tips_Asistencia</li>
+                        <li class="flex items-center gap-2 mt-4 opacity-50">
+                            <i class="fa-brands fa-cc-visa text-2xl"></i>
+                            <i class="fa-brands fa-cc-mastercard text-2xl"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-900 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
+                <p>&copy; 2025 Pronósticos Money Tips. Todos los derechos reservados.</p>
+                <div class="mt-4 md:mt-0 flex gap-4">
+                    <a href="avisolegal.html#cookies" class="hover:text-brand-accent transition-colors">Política de Cookies</a>
+                    <span class="flex items-center gap-2">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Juega con responsabilidad. +18.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL: ACCESO GRATIS -->
+    <div id="free-access-modal" class="custom-modal fixed inset-0 z-[60] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4">
+        <div class="bg-gray-900 border border-gray-700 rounded-2xl w-full max-w-2xl relative overflow-hidden shadow-2xl max-h-[90vh] flex flex-col">
+             <div class="bg-gray-800 p-4 flex justify-between items-center border-b border-gray-700 shrink-0">
+                <h3 class="text-lg font-bold text-white">Acceso Premium gratuito – Instrucciones</h3>
+                <button onclick="toggleModal('free-access-modal')" class="text-gray-400 hover:text-white transition-colors"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            <div class="p-6 overflow-y-auto custom-scrollbar">
+                <p class="text-gray-300 mb-6">Sigue estos pasos para conseguir acceso gratuito a los picks Premium:</p>
+                
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="bg-brand-accent/20 text-brand-accent w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">1</div>
+                        <p class="text-gray-300 text-sm">Haz clic en el botón <strong class="text-white">"Entendido"</strong> al final. Se abrirá una página con el listado de casas de apuestas disponibles en tu país.</p>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="bg-brand-accent/20 text-brand-accent w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">2</div>
+                        <p class="text-gray-300 text-sm">Junto a cada enlace verás el depósito mínimo necesario. <strong class="text-white">Regístrate desde nuestro enlace</strong>, la cuenta deberá ser nueva (esta es nuestra forma de monetizar tu registro).</p>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="bg-brand-accent/20 text-brand-accent w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">3</div>
+                        <p class="text-gray-300 text-sm">Verifica tu cuenta (importante para retiros futuros) y realiza el <strong class="text-white">depósito mínimo requerido</strong>.</p>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="bg-brand-accent/20 text-brand-accent w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">4</div>
+                        <div class="text-gray-300 text-sm space-y-2">
+                            <p>Envíanos por Telegram:</p>
+                            <ul class="list-disc list-inside pl-2 text-gray-400">
+                                <li>📸 Una captura del depósito realizado.</li>
+                                <li>📧 Una captura del correo de bienvenida.</li>
+                            </ul>
+                            <p class="mt-2 text-brand-primary font-semibold"><i class="fa-brands fa-telegram"></i> Escríbenos aquí: <a href="https://t.me/Money_Tips_Asistencia" target="_blank" class="underline hover:text-white">@Money_Tips_Asistencia</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 p-4 bg-gray-800 rounded-xl border border-gray-700 text-sm text-gray-400">
+                    <p class="mb-2"><i class="fa-solid fa-circle-info text-blue-400 mr-1"></i> No dudes en escribirnos si te surge alguna duda en el proceso.</p>
+                    <p class="mb-2"><i class="fa-solid fa-check-circle text-green-400 mr-1"></i> Una vez verificado, te daremos la contraseña Premium para acceder al contenido protegido en nuestro canal oficial:</p>
+                    <a href="https://t.me/+8VbeBONJEXM4YjE0" target="_blank" class="text-brand-accent hover:underline break-all">https://t.me/+8VbeBONJEXM4YjE0</a>
+                </div>
+            </div>
+            <div class="p-4 border-t border-gray-800 bg-gray-900 shrink-0">
+                <a href="https://link2play.com/12384/pronosticosmoneytips-ACCESOPREMIUM" target="_blank" class="block w-full py-3 bg-brand-accent hover:bg-brand-accentHover text-brand-darker font-bold text-center rounded-lg transition-all shadow-lg hover:shadow-green-500/30">
+                    ENTENDIDO <i class="fa-solid fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL VERIFICACIÓN DE EDAD (+18) -->
+    <div id="age-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md hidden transition-opacity duration-300 opacity-0">
+        <div class="bg-gray-900 border border-brand-accent/30 rounded-2xl p-8 max-w-md w-full mx-4 text-center shadow-[0_0_50px_rgba(34,197,94,0.1)] relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-brand-accent to-blue-500"></div>
+            <div class="mb-6 inline-flex items-center justify-center w-20 h-20 rounded-full bg-gray-800 text-brand-accent border border-brand-accent/20">
+                <span class="text-3xl font-extrabold">+18</span>
+            </div>
+            <h2 class="text-2xl font-bold text-white mb-2">Verificación de Edad</h2>
+            <p class="text-gray-400 mb-8 text-sm leading-relaxed">
+                Este sitio web contiene información sobre apuestas deportivas y juegos de azar. Para acceder, debes confirmar que eres mayor de edad según la legislación de tu país.
+            </p>
+            <div class="flex flex-col gap-3">
+                <button id="btn-age-yes" class="w-full py-3 bg-brand-accent hover:bg-brand-accentHover text-brand-darker font-bold rounded-lg transition-all shadow-[0_0_15px_rgba(34,197,94,0.3)] hover:shadow-[0_0_25px_rgba(34,197,94,0.5)]">
+                    SÍ, SOY MAYOR DE 18 AÑOS
+                </button>
+                <a href="https://www.google.com" class="w-full py-3 bg-transparent hover:bg-gray-800 text-gray-500 hover:text-white font-medium rounded-lg transition-colors border border-gray-800 hover:border-gray-600">
+                    NO, SALIR DE AQUÍ
+                </a>
+            </div>
+            <p class="mt-6 text-[10px] text-gray-600">Juega con responsabilidad. El juego puede causar adicción.</p>
+        </div>
+    </div>
+
+    <!-- BANNER DE COOKIES -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur border-t border-gray-800 p-4 md:p-6 transform translate-y-full transition-transform duration-500 shadow-2xl">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="text-sm text-gray-400 md:max-w-2xl">
+                <p class="mb-1"><strong class="text-white">Valoramos tu privacidad.</strong></p>
+                <p>Utilizamos cookies propias y de terceros para mejorar tu experiencia y analizar el tráfico. Consulta nuestra <a href="avisolegal.html#cookies" class="text-brand-accent hover:underline">Política de Cookies</a> para más información.</p>
+            </div>
+            <div class="flex gap-3 w-full md:w-auto">
+                <button id="btn-cookie-reject" class="flex-1 md:flex-none px-4 py-2 text-sm font-medium text-gray-400 hover:text-white bg-gray-800 hover:bg-gray-700 rounded transition-colors">
+                    Rechazar
+                </button>
+                <button id="btn-cookie-accept" class="flex-1 md:flex-none px-6 py-2 text-sm font-bold text-brand-darker bg-brand-accent hover:bg-brand-accentHover rounded shadow-[0_0_10px_rgba(34,197,94,0.2)] transition-all">
+                    Aceptar Todo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        function toggleModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                document.body.classList.remove('modal-open');
+            } else {
+                modal.classList.add('active');
+                document.body.classList.add('modal-open');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const ageModal = document.getElementById('age-modal');
+            const ageBtnYes = document.getElementById('btn-age-yes');
+            const cookieBanner = document.getElementById('cookie-banner');
+            const cookieBtnAccept = document.getElementById('btn-cookie-accept');
+            const cookieBtnReject = document.getElementById('btn-cookie-reject');
+
+            // Usamos sessionStorage para que la verificación aparezca en cada nueva sesión (pestaña cerrada/reabierta)
+            const isAgeVerified = sessionStorage.getItem('moneytips_age_verified');
+            if (!isAgeVerified) {
+                setTimeout(() => {
+                    ageModal.classList.remove('hidden');
+                    void ageModal.offsetWidth;
+                    ageModal.classList.remove('opacity-0');
+                    document.body.classList.add('modal-open');
+                }, 500);
+            }
+
+            ageBtnYes.addEventListener('click', () => {
+                sessionStorage.setItem('moneytips_age_verified', 'true');
+                ageModal.classList.add('opacity-0');
+                setTimeout(() => {
+                    ageModal.classList.add('hidden');
+                    if(!document.querySelector('.custom-modal.active')) {
+                        document.body.classList.remove('modal-open');
+                    }
+                }, 300);
+            });
+
+            const cookiesAccepted = localStorage.getItem('moneytips_cookies_accepted');
+            if (!cookiesAccepted) {
+                setTimeout(() => {
+                    cookieBanner.classList.remove('translate-y-full');
+                }, 1500);
+            }
+
+            cookieBtnAccept.addEventListener('click', () => {
+                localStorage.setItem('moneytips_cookies_accepted', 'true');
+                hideCookieBanner();
+            });
+
+            cookieBtnReject.addEventListener('click', () => {
+                localStorage.setItem('moneytips_cookies_accepted', 'false');
+                hideCookieBanner();
+            });
+
+            function hideCookieBanner() {
+                cookieBanner.classList.add('translate-y-full');
+            }
+        });
+    </script>
+</body>
+</html>
