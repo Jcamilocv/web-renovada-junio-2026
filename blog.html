@@ -2,17 +2,11 @@
 <!-- Uploaded by user: Money Tips - blog.html - FIXED LAYOUT & TAGS -->
 <html lang="es" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Money Tips | Estrategias y Análisis Deportivo</title>
     <meta name="description" content="Aprende a ganar dinero con apuestas deportivas. Guías sobre Gestión de Bank, Stake, Value Betting y cómo evitar estafas.">
 
-    <!-- SEO SOCIAL (Open Graph) -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pronosticosmoneytips.com/blog.html">
-    <meta property="og:title" content="Blog - Money Tips | Escuela de Apuestas">
-    <meta property="og:description" content="Domina las apuestas deportivas con nuestras guías profesionales.">
-    <meta property="og:image" content="social-share.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- FAVICON -->
     <link rel="icon" href="IMG_0782.PNG">
@@ -24,17 +18,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
 
     <script>
-        tailwind.config = \{
-            theme: \{
-                extend: \{
-                    fontFamily: \{
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                    \},
-                    colors: \{
-                        brand: \{
+                        serif: ['Merriweather', 'serif'],
+                    },
+                    colors: {
+                        brand: {
                             dark: '#0f172a', // Slate 900
                             darker: '#020617', // Slate 950
                             primary: '#3b82f6', // Blue 500
@@ -43,61 +38,87 @@
                             gold: '#fbbf24', // Amber 400 (Premium/Gold)
                             goldDark: '#d97706',
                             purple: '#8b5cf6',
-                            danger: '#ef4444'
-                        \}
-                    \},
-                    animation: \{
+                            danger: '#ef4444',
+                            warning: '#f59e0b',
+                        }
+                    },
+                    typography: (theme) => ({
+                        DEFAULT: {
+                            css: {
+                                color: '#d1d5db',
+                                a: {
+                                    color: '#22c55e',
+                                    '&:hover': { color: '#16a34a' },
+                                },
+                                h1: { color: '#ffffff' },
+                                h2: { color: '#ffffff', marginTop: '2em' },
+                                h3: { color: '#ffffff', marginTop: '1.5em' },
+                                strong: { color: '#ffffff' },
+                                blockquote: {
+                                    borderLeftColor: '#22c55e',
+                                    color: '#9ca3af',
+                                    fontStyle: 'italic'
+                                },
+                            },
+                        },
+                    }),
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         fadeIn: 'fadeIn 0.5s ease-in-out',
-                    \},
-                    keyframes: \{
-                        fadeIn: \{
-                            '0%': \{ opacity: '0', transform: 'translateY(-10px)' \},
-                            '100%': \{ opacity: '1', transform: 'translateY(0)' \},
-                        \}
-                    \}
-                \}
-            \}
-        \}
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(-10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
     </script>
     <style>
-        .text-glow \{ text-shadow: 0 0 10px rgba(34, 197, 94, 0.3); \}
-        .card-hover:hover \{ transform: translateY(-5px); \}
-        /* Asegura que las imágenes no rompan el layout */
-        img \{ max-width: 100%; height: auto; \}
+        .text-glow { text-shadow: 0 0 10px rgba(34, 197, 94, 0.3); }
+        .card-hover:hover { transform: translateY(-5px); }
+        #progress-bar { width: 0%; height: 4px; background: #22c55e; position: fixed; top: 0; left: 0; z-index: 100; transition: width 0.1s; }
+        .prose p { margin-bottom: 1.5em; line-height: 1.8; font-size: 1.125rem; }
+        .prose ul { list-style-type: none; padding-left: 0; margin-bottom: 2em; }
+        .prose li { margin-bottom: 0.75em; padding-left: 1.5em; position: relative; }
+        .prose li::before { content: "•"; color: #22c55e; font-weight: bold; position: absolute; left: 0; }
+        /* Fix for hidden images on load */
+        img { display: inline-block; }
     </style>
+
 </head>
 <body class="bg-brand-dark text-gray-100 font-sans antialiased flex flex-col min-h-screen">
 
     <!-- Navbar -->
-    <nav class="fixed w-full z-50 bg-brand-dark/95 border-b border-gray-800 backdrop-blur-md top-0 left-0">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-brand-dark/95 border-b border-gray-800 backdrop-blur-md top-0">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center cursor-pointer hover:opacity-80 transition-opacity gap-3" onclick="window.location.href='index.html'">
-                    <!-- Intenta cargar PNG, si falla oculta la imagen y muestra texto -->
-                    <img src="IMG_0782.PNG" alt="Money Tips Logo" class="h-12 w-auto" onerror="this.style.display='none'; document.getElementById('logo-text-fallback').classList.remove('hidden'); document.getElementById('logo-text-fallback').classList.add('block');">
-
-                    <!-- Texto del Logo (Siempre visible en Desktop, fallback en Mobile si falla imagen) -->
-                    <span id="logo-text-main" class="font-bold text-2xl tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-emerald-300 text-glow hidden md:block">MoneyTips</span>
-
-                    <!-- Fallback solo texto para móvil si falla la imagen -->
-                    <span id="logo-text-fallback" class="hidden font-bold text-2xl tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-emerald-300 text-glow">MoneyTips</span>
+                    <img src="IMG_0782.PNG" alt="Money Tips Logo" class="h-12 w-auto">
+                    <span class="font-bold text-2xl tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-emerald-300 text-glow hidden md:block">MoneyTips</span>
                 </div>
 
                 <!-- Desktop Menu -->
                 <div class="hidden lg:flex items-center space-x-6">
-                    <a href="index.html#inicio" class="text-sm font-medium hover:text-brand-accent transition-colors">Inicio</a>
-                    <a href="index.html#stats" class="text-sm font-medium hover:text-brand-accent transition-colors">Resultados</a>
-                    <a href="index.html#tools" class="text-sm font-medium hover:text-brand-accent transition-colors">Tracker</a>
-                    <a href="blog.html" class="text-sm font-bold text-brand-accent transition-colors">Blog</a>
+                    <a href="index.html#inicio" class="text-sm font-medium hover:text-brand-accent transition-colors text-gray-300">Inicio</a>
+                    <a href="index.html#stats" class="text-sm font-medium hover:text-brand-accent transition-colors text-gray-300">Resultados</a>
+                    <a href="index.html#tools" class="text-sm font-medium hover:text-brand-accent transition-colors text-gray-300">Tracker</a>
+                    <a href="blog.html" class="text-sm font-medium hover:text-brand-accent transition-colors text-brand-accent">Blog</a>
+                    <a href="index.html#testimonials" class="text-sm font-medium hover:text-brand-accent transition-colors text-gray-300">Comunidad</a>
 
+                    <!-- Social Icons -->
                     <div class="flex items-center space-x-4 border-l border-gray-700 pl-6 mx-2">
-                        <a href="https://t.me/canalmoneytips" target="_blank" class="text-gray-400 hover:text-blue-400 transition-colors"><i class="fa-brands fa-telegram text-xl"></i></a>
-                        <a href="https://www.instagram.com/money_tips_premium/" target="_blank" class="text-gray-400 hover:text-pink-500 transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
-                        <a href="https://www.threads.com/@money_tips_premium?invite=0" target="_blank" class="text-gray-400 hover:text-white transition-colors"><i class="fa-brands fa-threads text-xl"></i></a>
+                        <a href="https://t.me/canalmoneytips" target="_blank" class="text-gray-400 hover:text-blue-400 transition-colors" title="Telegram"><i class="fa-brands fa-telegram text-xl"></i></a>
+                        <a href="https://www.instagram.com/money_tips_premium/" target="_blank" class="text-gray-400 hover:text-pink-500 transition-colors" title="Instagram"><i class="fa-brands fa-instagram text-xl"></i></a>
+                        <a href="https://www.threads.com/@money_tips_premium?invite=0" target="_blank" class="text-gray-400 hover:text-white transition-colors" title="Threads"><i class="fa-brands fa-threads text-xl"></i></a>
                     </div>
 
-                    <a href="index.html#premium" class="bg-brand-accent hover:bg-brand-accentHover text-brand-darker px-5 py-2.5 rounded-lg text-sm font-bold transition-all transform hover:-translate-y-0.5">
+                    <a href="index.html#premium" class="bg-brand-accent hover:bg-brand-accentHover text-brand-darker px-5 py-2.5 rounded-lg text-sm font-bold transition-all shadow-[0_0_15px_rgba(34,197,94,0.3)] hover:shadow-[0_0_20px_rgba(34,197,94,0.5)] transform hover:-translate-y-0.5">
                         <i class="fa-solid fa-crown mr-2"></i>Premium
                     </a>
                 </div>
@@ -114,15 +135,21 @@
         <!-- Mobile Menu -->
         <div class="hidden lg:hidden bg-brand-dark border-b border-gray-800" id="mobile-menu">
             <div class="px-4 pt-4 pb-6 space-y-2">
-                <a href="index.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Inicio</a>
+                <a href="index.html#inicio" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Inicio</a>
                 <a href="index.html#stats" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Resultados</a>
+                <a href="index.html#tools" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Tracker</a>
                 <a href="blog.html" class="text-brand-accent hover:text-white block px-3 py-2 rounded-md text-base font-bold">Blog</a>
-                <a href="index.html#premium" class="text-brand-accent hover:text-white block px-3 py-2 rounded-md text-base font-bold bg-gray-800/50 mt-4">
-💎
- Acceso Premium</a>
+                <a href="index.html#premium" class="text-brand-accent hover:text-white block px-3 py-2 rounded-md text-base font-bold bg-gray-800/50 mt-4">💎 Acceso Premium</a>
+
+                 <div class="flex gap-6 px-3 py-4 mt-2 border-t border-gray-800 justify-center">
+                    <a href="https://t.me/canalmoneytips" target="_blank" class="text-blue-400"><i class="fa-brands fa-telegram text-2xl"></i></a>
+                    <a href="https://www.instagram.com/money_tips_premium/" target="_blank" class="text-pink-500"><i class="fa-brands fa-instagram text-2xl"></i></a>
+                     <a href="https://www.threads.com/@money_tips_premium?invite=0" target="_blank" class="text-white"><i class="fa-brands fa-threads text-2xl"></i></a>
+                </div>
             </div>
         </div>
     </nav>
+
 
     <!-- Blog Header -->
     <header class="pt-32 pb-12 bg-gradient-to-b from-brand-darker to-brand-dark border-b border-gray-800 relative z-10">
@@ -301,12 +328,14 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black py-16 border-t border-gray-900 mt-auto relative z-10">
+
+    <!-- Footer -->
+    <footer class="bg-black py-16 border-t border-gray-900 mt-auto z-10 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <div class="col-span-1 md:col-span-2">
                     <div class="flex items-center gap-2 mb-6">
-                        <img src="IMG_0782.PNG" alt="Logo" class="h-9 w-auto" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'">
+                        <img src="IMG_0782.PNG" alt="Logo" class="h-9 w-auto">
                         <span class="font-bold text-xl text-white">Money<span class="text-brand-accent">Tips</span></span>
                     </div>
                     <p class="text-gray-500 text-sm max-w-sm leading-relaxed mb-6">
@@ -316,6 +345,8 @@
                         <a href="https://t.me/canalmoneytips" target="_blank" class="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition-all"><i class="fa-brands fa-telegram"></i></a>
                         <a href="https://www.instagram.com/money_tips_premium/" target="_blank" class="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:bg-pink-600 hover:text-white transition-all"><i class="fa-brands fa-instagram"></i></a>
                         <a href="https://www.threads.com/@money_tips_premium?invite=0" target="_blank" class="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:bg-white hover:text-black transition-all"><i class="fa-brands fa-threads"></i></a>
+                        <a href="javascript:void(0)" class="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:bg-white hover:text-black transition-all cursor-default" title="Próximamente"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://youtube.com/@moneytipsoficial?si=hJXpdAGxHUukwsgX" target="_blank" class="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:bg-red-600 hover:text-white transition-all"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
                 <div>
@@ -349,8 +380,8 @@
                     </span>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+
 
     <!-- SCRIPT DE FUNCIONALIDAD DEL BOTÓN -->
     <script>
