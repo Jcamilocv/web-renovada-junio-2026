@@ -1,44 +1,57 @@
 <!DOCTYPE html>
-
-<!-- Uploaded by user: Money Tips - blog.html - FIXED LAYOUT & TAGS -->
-<html class="scroll-smooth" lang="es">
+<html lang="es" class="scroll-smooth dark">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Blog - Money Tips | Estrategias y An'e1lisis Deportivo</title>
-<meta content="Aprende a ganar dinero con apuestas deportivas. Gu'edas sobre Gesti'f3n de Bank, Stake, Value Betting y c'f3mo evitar estafas." name="description"/>
-<!-- SEO SOCIAL (Open Graph) -->
-<meta content="website" property="og:type"/>
-<meta content="https://pronosticosmoneytips.com/blog.html" property="og:url"/>
-<meta content="Blog - Money Tips | Escuela de Apuestas" property="og:title"/>
-<meta content="Domina las apuestas deportivas con nuestras gu'edas profesionales." property="og:description"/>
-<meta content="social-share.jpg" property="og:image"/>
-<!-- FAVICON -->
-<link href="favicon.png" rel="icon"/>
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com"></script>
-<!-- FontAwesome (6.5.1) -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&amp;display=swap" rel="stylesheet"/>
-<script>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Blog - Money Tips | Estrategias y Análisis Deportivo</title>
+    <meta name="description" content="Aprende a ganar dinero con apuestas deportivas. Guías sobre Gestión de Bank, Stake, Value Betting y cómo evitar estafas."/>
+    
+    <!-- SEO SOCIAL (Open Graph) -->
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://pronosticosmoneytips.com/blog.html"/>
+    <meta property="og:title" content="Blog - Money Tips | Escuela de Apuestas"/>
+    <meta property="og:description" content="Domina las apuestas deportivas con nuestras guías profesionales."/>
+    <meta property="og:image" content="social-share.jpg"/>
+    
+    <!-- FAVICON -->
+    <link rel="icon" href="favicon.png"/>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome (6.5.1) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    
+    <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
                     },
                     colors: {
                         brand: {
-                            dark: '#0f172a', // Slate 900
-                            darker: '#020617', // Slate 950
-                            primary: '#3b82f6', // Blue 500
-                            accent: '#22c55e', // Green 500 (Vibrant Money Green)
-                            accentHover: '#16a34a',
-                            gold: '#fbbf24', // Amber 400 (Premium/Gold)
-                            goldDark: '#d97706',
-                            purple: '#8b5cf6',
-                            danger: '#ef4444'
+                            // Modo Oscuro
+                            dark: '#050B14',
+                            card: '#0A1128',
+                            cardHover: '#121C3A',
+                            
+                            // Modo Claro
+                            lightBg: '#F8FAFC',
+                            lightCard: '#FFFFFF',
+                            lightText: '#0F172A',
+                            lightTextMuted: '#64748B',
+                            
+                            // Acentos
+                            neon: '#00F59B',
+                            neonDim: 'rgba(0, 245, 155, 0.15)',
+                            light: '#E2E8F0',
+                            muted: '#94A3B8',
                         }
                     },
                     animation: {
@@ -49,296 +62,367 @@
                             '0%': { opacity: '0', transform: 'translateY(-10px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
+                    },
+                    boxShadow: {
+                        'neon': '0 0 15px rgba(0, 245, 155, 0.3)',
+                        'neon-strong': '0 0 25px rgba(0, 245, 155, 0.5)',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+                        'light-card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)'
                     }
                 }
             }
         }
     </script>
-<style>
-        .text-glow { text-shadow: 0 0 10px rgba(34, 197, 94, 0.3); }
+    
+    <script>
+        // Lógica de detección de tema inicial para evitar parpadeos
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+
+    <style>
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #ffffff, #00F59B);
+        }
+        html:not(.dark) .text-gradient {
+            background-image: linear-gradient(to right, #0F172A, #059669);
+        }
+        .glass-panel {
+            background: rgba(10, 17, 40, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        html:not(.dark) .glass-panel {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F8FAFC; }
+        ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+        html.dark ::-webkit-scrollbar-track { background: #050B14; }
+        html.dark ::-webkit-scrollbar-thumb { background: #121C3A; }
+        html.dark ::-webkit-scrollbar-thumb:hover { background: #00F59B; }
+        
         .card-hover:hover { transform: translateY(-5px); }
-        /* Asegura que las im'e1genes no rompan el layout */
         img { max-width: 100%; height: auto; }
     </style>
 </head>
-<body class="bg-brand-dark text-gray-100 font-sans antialiased flex flex-col min-h-screen">
-<!-- Navbar -->
-<nav class="fixed top-0 w-full z-50 glass-panel border-b border-gray-200 dark:border-white/5 transition-all duration-300">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-<div class="flex items-center justify-between h-20">
-<!-- Logo -->
-<div class="flex-shrink-0 flex items-center cursor-pointer hover:opacity-80 transition-opacity gap-3" onclick="window.location.href='#'">
-<img alt="Money Tips Logo" class="w-10 h-10 object-contain" src="favicon.png"/>
-<span class="font-extrabold text-2xl tracking-tight text-gray-900 dark:text-white uppercase italic">
-                        Money<span class="text-brand-neon">Tips</span>
-</span>
-</div>
-<!-- Desktop Menu -->
-<div class="hidden lg:flex items-center space-x-6 relative z-10">
-<a class="text-sm font-medium hover:text-brand-neon transition-colors" href="index.html#inicio">Método</a>
-<a class="text-sm font-medium hover:text-brand-neon transition-colors" href="index.html#estadisticas">Histórico Oficial</a>
-<a class="text-sm font-medium hover:text-brand-neon transition-colors" href="index.html#historia">Sobre Mí</a>
-<a class="text-sm font-medium hover:text-brand-neon transition-colors" href="index.html#ecosistema">Ecosistema</a>
-<!-- Enlace funcional al Blog -->
-<a class="text-sm font-medium hover:text-brand-neon transition-colors" href="https://pronosticosmoneytips.com/blog.html">Blog</a>
-<!-- Theme Toggle Button (Sol/Luna) -->
-<button aria-label="Toggle Dark Mode" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none rounded-lg text-sm p-2.5 transition-colors" id="theme-toggle" type="button">
-<i class="hidden fa-solid fa-moon text-lg" id="theme-toggle-dark-icon"></i>
-<i class="hidden fa-solid fa-sun text-lg" id="theme-toggle-light-icon"></i>
-</button>
-<!-- Social Icons -->
-<div class="flex items-center space-x-4 border-l border-gray-300 dark:border-white/10 pl-6 mx-2">
-<a class="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors relative z-20" href="https://t.me/canalmoneytips" target="_blank"><i class="fa-brands fa-telegram text-xl"></i></a>
-<!-- (Pendiente añadir enlaces reales de YT y X si los necesitas aquí arriba) -->
-<a class="text-gray-500 dark:text-gray-400 hover:text-red-500 transition-colors relative z-20" href="index.html#" target="_blank"><i class="fa-brands fa-youtube text-xl"></i></a>
-<a class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors relative z-20" href="index.html#" target="_blank"><i class="fa-brands fa-x-twitter text-xl"></i></a>
-</div>
-<!-- Botón "Acceso IA" que lleva a la sección premium (Plazas cerradas) -->
-<a class="bg-brand-neon hover:bg-green-400 dark:hover:bg-white text-gray-900 dark:text-brand-dark px-5 py-2.5 rounded-lg text-sm font-bold transition-all shadow-neon hover:shadow-neon-strong transform hover:-translate-y-0.5 relative z-20" href="index.html#premium">
-<i class="fa-solid fa-robot mr-2"></i>Acceso IA
-                    </a>
-</div>
-<!-- Mobile menu button & Theme toggle -->
-<div class="flex lg:hidden items-center gap-4 relative z-20">
-<button aria-label="Toggle Dark Mode Mobile" class="text-gray-500 dark:text-gray-400 focus:outline-none rounded-lg text-sm p-2" id="theme-toggle-mobile" type="button">
-<i class="hidden fa-solid fa-moon text-lg" id="theme-toggle-dark-icon-mobile"></i>
-<i class="hidden fa-solid fa-sun text-lg" id="theme-toggle-light-icon-mobile"></i>
-</button>
-<button class="text-gray-500 dark:text-gray-400 hover:text-brand-neon focus:outline-none p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" type="button">
-<i class="fa-solid fa-bars text-2xl"></i>
-</button>
-</div>
-</div>
-</div>
-<!-- Mobile Menu -->
-<div class="hidden lg:hidden bg-white dark:bg-brand-card border-b border-gray-200 dark:border-white/5 absolute w-full z-50 top-full left-0 shadow-2xl" id="mobile-menu">
-<div class="px-4 pt-4 pb-6 space-y-2">
-<a class="text-gray-700 dark:text-gray-300 hover:text-brand-neon block px-3 py-2 rounded-md text-base font-medium" href="index.html#inicio" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Método</a>
-<a class="text-gray-700 dark:text-gray-300 hover:text-brand-neon block px-3 py-2 rounded-md text-base font-medium" href="index.html#estadisticas" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Histórico Oficial</a>
-<a class="text-gray-700 dark:text-gray-300 hover:text-brand-neon block px-3 py-2 rounded-md text-base font-medium" href="index.html#historia" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Sobre Mí</a>
-<a class="text-gray-700 dark:text-gray-300 hover:text-brand-neon block px-3 py-2 rounded-md text-base font-medium" href="https://pronosticosmoneytips.com/blog.html">Blog</a>
-<a class="text-gray-900 dark:text-brand-dark bg-brand-neon block px-3 py-2 rounded-md text-base font-bold text-center mt-4" href="index.html#premium" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Acceso IA</a>
-</div>
-</div>
-</nav>
-<!-- Blog Header -->
-<header class="pt-32 pb-12 bg-gradient-to-b from-brand-darker to-brand-dark border-b border-gray-800 relative z-10">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-<h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Blog &amp; Academia de Apuestas</h1>
-<p class="text-gray-400 max-w-2xl mx-auto text-lg">
-                Deja de apostar por intuici'f3n. Empieza a invertir con datos. <br/>
-<span class="text-brand-accent font-semibold">Educaci'f3n, An'e1lisis y Estrategia Profesional.</span>
-</p>
-</div>
-</header>
-<!-- Blog Content Grid -->
-<section class="py-16 bg-brand-dark relative z-10">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<!-- GRID PRINCIPAL -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr">
-<!-- ========================================== -->
-<!-- ARTICULO 1: DESTACADO (TRANSPARENCIA) - Ancho completo -->
-<!-- ========================================== -->
-<article class="col-span-1 md:col-span-2 lg:col-span-3 bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl overflow-hidden border-2 border-brand-accent/50 shadow-[0_0_20px_rgba(34,197,94,0.15)] relative transform hover:-translate-y-1 transition-all duration-300 flex flex-col md:flex-row">
-<div class="absolute top-4 right-4 bg-brand-accent text-brand-darker font-bold text-xs px-3 py-1 rounded-full z-10 shadow-lg animate-pulse">
-<i class="fa-solid fa-star mr-1"></i> LEER PRIMERO
-                    </div>
-<!-- Imagen Destacada -->
-<div class="md:w-2/5 relative min-h-[250px] md:min-h-0 bg-gray-900">
-<div class="absolute inset-0 bg-gradient-to-tr from-green-900/40 to-blue-900/40 flex items-center justify-center">
-<i class="fa-solid fa-handshake text-8xl text-white/10"></i>
-</div>
-</div>
-<!-- Contenido Destacado -->
-<div class="p-8 md:w-3/5 flex flex-col justify-center">
-<div class="flex items-center gap-3 text-xs text-gray-500 mb-3">
-<span class="text-brand-accent font-bold uppercase tracking-wider"><i class="fa-solid fa-lock-open mr-1"></i> Transparencia</span>
-<span>Lectura: 3 min</span>
-</div>
-<h2 class="text-2xl md:text-3xl font-bold text-white mb-4 leading-tight">
-                            'bfPor qu'e9 el acceso es GRATIS? La verdad sobre nuestro modelo de negocio
-                        </h2>
-<p class="text-gray-300 mb-6 leading-relaxed">
-                            No te cobramos cuota mensual porque trabajamos con afiliaci'f3n profesional (CPA). Descubre por qu'e9 <strong>NO ganamos cuando t'fa pierdes</strong> y por qu'e9 nuestro inter'e9s es 100% que ganes dinero a largo plazo.
-                        </p>
-<!-- BOT'd3N TOGGLE -->
-<button class="inline-flex items-center bg-brand-accent/10 text-brand-accent px-5 py-2 rounded-lg font-bold hover:bg-brand-accent hover:text-brand-darker transition-all w-fit cursor-pointer group" onclick="toggleTransparency(this)">
-<span class="btn-text">Leer explicaci'f3n completa</span> <i class="fa-solid fa-chevron-down ml-2 group-hover:translate-y-0.5 transition-transform"></i>
-</button>
-<!-- CONTENIDO OCULTO -->
-<div class="hidden mt-6 pt-6 border-t border-gray-700/50 w-full" id="transparencia-details">
-<h3 class="text-white font-bold text-lg mb-4">La realidad del modelo CPA:</h3>
-<ul class="space-y-3 mb-6">
-<li class="flex items-start text-gray-300 text-sm">
-<i class="fa-solid fa-check text-brand-accent mt-1 mr-3 shrink-0"></i>
-<span><strong>CPA (Coste por Adquisici'f3n):</strong> La casa de apuestas nos paga una tarifa fija 'daNICA cuando te registras y depositas. Solo una vez.</span>
-</li>
-<li class="flex items-start text-gray-300 text-sm">
-<i class="fa-solid fa-xmark text-red-500 mt-1 mr-3 shrink-0"></i>
-<span><strong>NO es Revenue Share:</strong> NO ganamos un % de tus p'e9rdidas. Si t'fa pierdes, nosotros no ganamos nada extra.</span>
-</li>
-<li class="flex items-start text-gray-300 text-sm">
-<i class="fa-solid fa-user-group text-brand-accent mt-1 mr-3 shrink-0"></i>
-<span><strong>Nuestro inter'e9s real:</strong> Queremos que ganes dinero para que sigas en el canal a'f1os, nos recomiendes y uses nuestras herramientas futuras.</span>
-</li>
-</ul>
-<div class="bg-brand-accent/10 border border-brand-accent/20 p-4 rounded-xl">
-<p class="text-brand-accent text-sm font-bold flex items-center">
-<i class="fa-solid fa-lightbulb mr-2"></i> Conclusi'f3n:
-                                </p>
-<p class="text-gray-300 text-xs mt-1 pl-6">
-                                    El dep'f3sito es tu capital de inversi'f3n. No es un pago por el servicio. El dinero sigue siendo tuyo para operar.
-                                </p>
-</div>
-</div>
-</div>
-</article>
-<!-- ========================================== -->
-<!-- ARTICULO 2: BACKTESTING -->
-<!-- ========================================== -->
-<article class="bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 hover:border-brand-purple transition-all card-hover shadow-lg flex flex-col group h-full">
-<div class="h-48 bg-gray-900 overflow-hidden relative shrink-0">
-<div class="absolute inset-0 bg-gradient-to-br from-indigo-900 to-purple-900 flex items-center justify-center">
-<i class="fa-solid fa-flask-vial text-5xl text-purple-400/30 group-hover:scale-110 transition-transform duration-500"></i>
-</div>
-<div class="absolute bottom-0 left-0 w-full h-1 bg-brand-purple"></div>
-</div>
-<div class="p-6 flex-1 flex flex-col">
-<div class="flex justify-between text-xs text-gray-500 mb-3">
-<span class="text-brand-purple font-semibold">Matem'e1ticas</span>
-<span>Nivel: Avanzado</span>
-</div>
-<h2 class="text-xl font-bold text-white mb-3 group-hover:text-brand-purple transition-colors">
-                            Backtesting + Valor Esperado (+EV): La F'f3rmula Real
-                        </h2>
-<p class="text-gray-400 text-sm mb-4 line-clamp-3">
-                            Dejar de apostar por suerte y empezar a invertir con datos. Te ense'f1amos la f'f3rmula que usan los profesionales para ganar a la banca.
-                        </p>
-<a class="mt-auto text-brand-purple text-sm font-bold hover:underline" href="backtesting-valor-esperado.html">Leer f'f3rmula <i class="fa-solid fa-chevron-right ml-1 text-xs"></i></a>
-</div>
-</article>
-<!-- ========================================== -->
-<!-- ARTICULO 3: GESTI'd3N DE BANK -->
-<!-- ========================================== -->
-<article class="bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 hover:border-brand-accent transition-all card-hover shadow-lg flex flex-col group h-full">
-<div class="h-48 bg-gray-900 overflow-hidden relative shrink-0">
-<div class="absolute inset-0 bg-gradient-to-br from-green-600/20 to-emerald-600/20 flex items-center justify-center">
-<i class="fa-solid fa-piggy-bank text-5xl text-green-500/30 group-hover:scale-110 transition-transform duration-500"></i>
-</div>
-<div class="absolute bottom-0 left-0 w-full h-1 bg-brand-accent"></div>
-</div>
-<div class="p-6 flex-1 flex flex-col">
-<div class="flex justify-between text-xs text-gray-500 mb-3">
-<span class="text-green-400 font-semibold">Finanzas</span>
-<span>Nivel: B'e1sico</span>
-</div>
-<h2 class="text-xl font-bold text-white mb-3 group-hover:text-brand-accent transition-colors">
-                            Gesti'f3n de Bankroll: C'f3mo Evitar la Ruina del Apostador
-                        </h2>
-<p class="text-gray-400 text-sm mb-4 line-clamp-3">
-                            El 90% pierde por mala gesti'f3n, no por malos picks. Aprende a calcular tu Stake y evita quemar tu cuenta en una mala racha.
-                        </p>
-<a class="mt-auto text-brand-accent text-sm font-bold hover:underline" href="gestion-bankroll.html">Leer art'edculo <i class="fa-solid fa-chevron-right ml-1 text-xs"></i></a>
-</div>
-</article>
-<!-- ========================================== -->
-<!-- ARTICULO 4: DETECTAR ESTAFADORES -->
-<!-- ========================================== -->
-<article class="bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 hover:border-brand-danger/50 transition-all card-hover shadow-lg flex flex-col group h-full">
-<div class="h-48 bg-gray-900 overflow-hidden relative shrink-0">
-<div class="absolute inset-0 bg-gradient-to-br from-red-900 to-gray-900 flex items-center justify-center">
-<i class="fa-solid fa-user-secret text-5xl text-red-500/30 group-hover:scale-110 transition-transform duration-500"></i>
-</div>
-<div class="absolute bottom-0 left-0 w-full h-1 bg-brand-danger"></div>
-</div>
-<div class="p-6 flex-1 flex flex-col">
-<div class="flex justify-between text-xs text-gray-500 mb-3">
-<span class="text-brand-danger font-semibold">Seguridad</span>
-<span>Lectura: 5 min</span>
-</div>
-<h2 class="text-xl font-bold text-white mb-3 group-hover:text-brand-danger transition-colors">
-                            C'f3mo Detectar un Tipster Estafador en 5 Minutos
-                        </h2>
-<p class="text-gray-400 text-sm mb-4 line-clamp-3">
-                            Vendeh'famos, "fixed matches" y rentabilidades imposibles. Te ense'f1amos las 7 se'f1ales para identificar una estafa antes de perder tu dinero.
-                        </p>
-<a class="mt-auto text-brand-danger text-sm font-bold hover:underline" href="como-detectar-tipster-estafador.html">Verificar ahora <i class="fa-solid fa-chevron-right ml-1 text-xs"></i></a>
-</div>
-</article>
-</div>
-<!-- CTA Final Blog -->
-<div class="mt-16 bg-gradient-to-r from-brand-accent to-green-600 rounded-2xl p-8 md:p-12 text-center shadow-lg relative overflow-hidden">
-<div class="relative z-10">
-<h2 class="text-3xl font-extrabold text-brand-darker mb-4">'bfQuieres aplicar esto y ganar dinero hoy?</h2>
-<p class="text-brand-darker/80 text-lg mb-8 max-w-2xl mx-auto font-medium">
-                        La teor'eda est'e1 muy bien, pero la pr'e1ctica es donde se gana. 'danete a nuestro canal Premium (Gratis con registro) y recibe los picks de hoy.
-                    </p>
-<a class="inline-block bg-brand-darker text-white font-bold py-4 px-8 rounded-xl shadow-xl hover:bg-gray-900 hover:scale-105 transition-transform border border-brand-darker" href="index.html#premium">
-<i class="fa-brands fa-telegram mr-2"></i> UNIRME AL CANAL PREMIUM
-                    </a>
-</div>
-<!-- Decoraci'f3n fondo -->
-<i class="fa-solid fa-money-bill-wave absolute -bottom-10 -right-10 text-9xl text-white/10 rotate-12"></i>
-<i class="fa-solid fa-chart-line absolute top-10 -left-10 text-8xl text-white/10 -rotate-12"></i>
-</div>
-</div>
-</section>
-<!-- Footer -->
-<footer class="bg-black py-16 border-t border-gray-900 mt-auto relative z-10">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-<div class="col-span-1 md:col-span-2">
-<div class="flex items-center gap-2 mb-6">
-<img alt="Logo" class="h-9 w-auto" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'" src="IMG_0782.PNG"/>
-<span class="font-bold text-xl text-white">Money<span class="text-brand-accent">Tips</span></span>
-</div>
-<p class="text-gray-500 text-sm max-w-sm leading-relaxed mb-6">
-                        Somos m'e1s que un canal de apuestas. Somos una herramienta de inversi'f3n financiera aplicada al deporte. 'danete a la 'e9lite.
-                    </p>
-<div class="flex gap-4">
-<a class="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition-all" href="https://t.me/canalmoneytips" target="_blank"><i class="fa-brands fa-telegram"></i></a>
-<a class="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:bg-pink-600 hover:text-white transition-all" href="https://www.instagram.com/money_tips_premium/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-<a class="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-gray-400 hover:bg-white hover:text-black transition-all" href="https://www.threads.com/@money_tips_premium?invite=0" target="_blank"><i class="fa-brands fa-threads"></i></a>
-</div>
-</div>
-<div>
-<h3 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Enlaces R'e1pidos</h3>
-<ul class="space-y-3 text-gray-500 text-sm">
-<li><a class="hover:text-brand-accent transition-colors" href="index.html#inicio">Inicio</a></li>
-<li><a class="hover:text-brand-accent transition-colors" href="index.html#stats">Estad'edsticas</a></li>
-<li><a class="hover:text-brand-accent transition-colors" href="blog.html">Blog</a></li>
-<li><a class="hover:text-brand-accent transition-colors font-bold text-gray-300" href="index.html#premium">Plan Premium</a></li>
-<li><a class="hover:text-brand-accent transition-colors" href="avisolegal.html">Aviso Legal</a></li>
-</ul>
-</div>
-<div>
-<h3 class="text-white font-bold mb-6 text-sm uppercase tracking-wider">Contacto</h3>
-<ul class="space-y-3 text-gray-500 text-sm">
-<li class="flex items-center"><i class="fa-regular fa-envelope w-6 text-brand-accent"></i> moneytspremium@gmail.com</li>
-<li class="flex items-center"><i class="fa-brands fa-telegram w-6 text-brand-accent"></i> @Money_Tips_Asistencia</li>
-<li class="flex items-center gap-2 mt-4 opacity-50">
-<i class="fa-brands fa-cc-visa text-2xl"></i>
-<i class="fa-brands fa-cc-mastercard text-2xl"></i>
-</li>
-</ul>
-</div>
-</div>
-<div class="border-t border-gray-900 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
-<p>© 2025 Pron'f3sticos Money Tips. Todos los derechos reservados.</p>
-<div class="mt-4 md:mt-0 flex gap-4">
-<a class="hover:text-brand-accent transition-colors" href="avisolegal.html#cookies">Pol'edtica de Cookies</a>
-<span class="flex items-center gap-2">
-<i class="fa-solid fa-triangle-exclamation"></i> Juega con responsabilidad. +18.
+<body class="antialiased font-sans flex flex-col min-h-screen bg-brand-lightBg dark:bg-brand-dark text-brand-lightText dark:text-gray-200 transition-colors duration-300">
+
+    <!-- NAVBAR MAESTRO (IDÉNTICO AL INDEX.HTML) -->
+    <nav class="fixed top-0 w-full z-[9999] glass-panel border-b border-gray-200 dark:border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer hover:opacity-80 transition-opacity gap-3" onclick="window.location.href='index.html'">
+                    <img src="favicon.png" alt="Money Tips Logo" class="w-10 h-10 object-contain">
+                    <span class="font-extrabold text-2xl tracking-tight text-gray-900 dark:text-white uppercase italic">
+                        Money<span class="text-green-600 dark:text-brand-neon">Tips</span>
                     </span>
-</div>
-</div>
-</div>
-</footer>
-<!-- SCRIPT DE FUNCIONALIDAD DEL BOT'd3N -->
-<script>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-6 relative z-10 ">
+                    <a href="index.html#inicio" class="text-sm font-medium hover:text-green-600 dark:hover:text-brand-neon transition-colors">Método</a>
+                    <a href="index.html#estadisticas" class="text-sm font-medium hover:text-green-600 dark:hover:text-brand-neon transition-colors">Histórico Oficial</a>
+                    <a href="index.html#historia" class="text-sm font-medium hover:text-green-600 dark:hover:text-brand-neon transition-colors">Sobre Mí</a>
+                    <a href="index.html#ecosistema" class="text-sm font-medium hover:text-green-600 dark:hover:text-brand-neon transition-colors">Ecosistema</a>
+                    <!-- Enlace funcional al Blog -->
+                    <a href="https://pronosticosmoneytips.com/blog.html" class="text-sm font-medium text-green-600 dark:text-brand-neon transition-colors">Blog</a>
+                    
+                    <!-- Theme Toggle Button (Sol/Luna) -->
+                    <button id="theme-toggle" aria-label="Toggle Dark Mode" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none rounded-lg text-sm p-2.5 transition-colors">
+                        <i id="theme-toggle-dark-icon" class="hidden fa-solid fa-moon text-lg"></i>
+                        <i id="theme-toggle-light-icon" class="hidden fa-solid fa-sun text-lg"></i>
+                    </button>
+
+                    <!-- Social Icons -->
+                    <div class="flex items-center space-x-4 border-l border-gray-300 dark:border-white/10 pl-6 mx-2">
+                        <a href="https://t.me/canalmoneytips" target="_blank" class="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors relative z-20"><i class="fa-brands fa-telegram text-xl"></i></a>
+                        <a href="https://youtube.com/@moneytipsoficial?si=hJXpdAGxHUukwsgX" target="_blank" class="text-gray-500 dark:text-gray-400 hover:text-red-500 transition-colors relative z-20"><i class="fa-brands fa-youtube text-xl"></i></a>
+                        <a href="#" target="_blank" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors relative z-20"><i class="fa-brands fa-x-twitter text-xl"></i></a>
+                    </div>
+
+                    <!-- Botón "Acceso IA" que lleva a la sección premium (Plazas cerradas) -->
+                    <a href="index.html#premium" class="bg-green-500 dark:bg-brand-neon hover:bg-green-600 dark:hover:bg-white text-white dark:text-brand-dark px-5 py-2.5 rounded-lg text-sm font-bold transition-all shadow-sm dark:shadow-neon transform hover:-translate-y-0.5 relative z-20 ">
+                        <i class="fa-solid fa-robot mr-2"></i>Acceso IA
+                    </a>
+                </div>
+
+                <!-- Mobile menu button & Theme toggle -->
+                <div class="flex lg:hidden items-center gap-4 relative z-20">
+                     <button id="theme-toggle-mobile" aria-label="Toggle Dark Mode Mobile" type="button" class="text-gray-500 dark:text-gray-400 focus:outline-none rounded-lg text-sm p-2">
+                        <i id="theme-toggle-dark-icon-mobile" class="hidden fa-solid fa-moon text-lg"></i>
+                        <i id="theme-toggle-light-icon-mobile" class="hidden fa-solid fa-sun text-lg"></i>
+                    </button>
+                    <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" type="button" class="text-gray-500 dark:text-gray-400 hover:text-green-600 dark:hover:text-brand-neon focus:outline-none p-2 ">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="hidden lg:hidden bg-white dark:bg-brand-card border-b border-gray-200 dark:border-white/5 absolute w-full z-50 top-full left-0 shadow-2xl" id="mobile-menu">
+            <div class="px-4 pt-4 pb-6 space-y-2">
+                <a href="index.html#inicio" class="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-brand-neon block px-3 py-2 rounded-md text-base font-medium">Método</a>
+                <a href="index.html#estadisticas" class="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-brand-neon block px-3 py-2 rounded-md text-base font-medium">Histórico Oficial</a>
+                <a href="index.html#historia" class="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-brand-neon block px-3 py-2 rounded-md text-base font-medium">Sobre Mí</a>
+                <a href="https://pronosticosmoneytips.com/blog.html" class="text-green-600 dark:text-brand-neon block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+                <a href="index.html#premium" class="text-white dark:text-brand-dark bg-green-500 dark:bg-brand-neon block px-3 py-2 rounded-md text-base font-bold text-center mt-4">Acceso IA</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <header class="pt-32 pb-12 bg-white dark:bg-brand-card border-b border-gray-200 dark:border-white/5 relative z-10 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">Blog & Academia de Apuestas</h1>
+            <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">
+                Deja de apostar por intuición. Empieza a invertir con datos. <br/>
+                <span class="text-green-600 dark:text-brand-neon font-semibold">Educación, Análisis y Estrategia Profesional.</span>
+            </p>
+        </div>
+    </header>
+
+    <!-- Blog Content Grid -->
+    <section class="py-16 bg-brand-lightBg dark:bg-brand-dark relative z-10 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- GRID PRINCIPAL -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr">
+                
+                <!-- ========================================== -->
+                <!-- ARTICULO 1: DESTACADO (TRANSPARENCIA) - Ancho completo -->
+                <!-- ========================================== -->
+                <article class="col-span-1 md:col-span-2 lg:col-span-3 bg-white dark:bg-gradient-to-r dark:from-brand-card dark:to-[#0A1128] rounded-2xl overflow-hidden border border-gray-200 dark:border-brand-neon/30 shadow-lg dark:shadow-[0_0_20px_rgba(0,245,155,0.05)] relative transform hover:-translate-y-1 transition-all duration-300 flex flex-col md:flex-row">
+                    <div class="absolute top-4 right-4 bg-green-500 dark:bg-brand-neon text-white dark:text-brand-dark font-bold text-xs px-3 py-1 rounded-full z-10 shadow-sm animate-pulse">
+                        <i class="fa-solid fa-star mr-1"></i> LEER PRIMERO
+                    </div>
+                    <!-- Imagen Destacada -->
+                    <div class="md:w-2/5 relative min-h-[250px] md:min-h-0 bg-slate-100 dark:bg-[#050B14]">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-green-600/10 to-blue-600/10 dark:from-green-900/40 dark:to-blue-900/40 flex items-center justify-center">
+                            <i class="fa-solid fa-handshake text-8xl text-gray-300 dark:text-white/10"></i>
+                        </div>
+                    </div>
+                    <!-- Contenido Destacado -->
+                    <div class="p-8 md:w-3/5 flex flex-col justify-center">
+                        <div class="flex items-center gap-3 text-xs text-gray-500 mb-3">
+                            <span class="text-green-600 dark:text-brand-neon font-bold uppercase tracking-wider"><i class="fa-solid fa-lock-open mr-1"></i> Transparencia</span>
+                            <span>Lectura: 3 min</span>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
+                            ¿Por qué el acceso es GRATIS? La verdad sobre nuestro modelo de negocio
+                        </h2>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                            No te cobramos cuota mensual porque trabajamos con afiliación profesional (CPA). Descubre por qué <strong>NO ganamos cuando tú pierdes</strong> y por qué nuestro interés es 100% que ganes dinero a largo plazo.
+                        </p>
+                        <!-- BOTÓN TOGGLE -->
+                        <button class="inline-flex items-center bg-green-50 dark:bg-brand-neon/10 text-green-700 dark:text-brand-neon px-5 py-2 rounded-lg font-bold hover:bg-green-100 dark:hover:bg-brand-neon dark:hover:text-brand-dark transition-all w-fit cursor-pointer group border border-green-200 dark:border-transparent" onclick="toggleTransparency(this)">
+                            <span class="btn-text">Leer explicación completa</span> <i class="fa-solid fa-chevron-down ml-2 group-hover:translate-y-0.5 transition-transform"></i>
+                        </button>
+                        
+                        <!-- CONTENIDO OCULTO -->
+                        <div class="hidden mt-6 pt-6 border-t border-gray-200 dark:border-gray-700/50 w-full" id="transparencia-details">
+                            <h3 class="text-gray-900 dark:text-white font-bold text-lg mb-4">La realidad del modelo CPA:</h3>
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex items-start text-gray-600 dark:text-gray-300 text-sm">
+                                    <i class="fa-solid fa-check text-green-500 dark:text-brand-neon mt-1 mr-3 shrink-0"></i>
+                                    <span><strong>CPA (Coste por Adquisición):</strong> La casa de apuestas nos paga una tarifa fija ÚNICA cuando te registras y depositas. Solo una vez.</span>
+                                </li>
+                                <li class="flex items-start text-gray-600 dark:text-gray-300 text-sm">
+                                    <i class="fa-solid fa-xmark text-red-500 mt-1 mr-3 shrink-0"></i>
+                                    <span><strong>NO es Revenue Share:</strong> NO ganamos un % de tus pérdidas. Si tú pierdes, nosotros no ganamos nada extra.</span>
+                                </li>
+                                <li class="flex items-start text-gray-600 dark:text-gray-300 text-sm">
+                                    <i class="fa-solid fa-user-group text-green-500 dark:text-brand-neon mt-1 mr-3 shrink-0"></i>
+                                    <span><strong>Nuestro interés real:</strong> Queremos que ganes dinero para que sigas en el canal años, nos recomiendes y uses nuestras herramientas futuras.</span>
+                                </li>
+                            </ul>
+                            <div class="bg-green-50 dark:bg-brand-neon/5 border border-green-200 dark:border-brand-neon/20 p-4 rounded-xl">
+                                <p class="text-green-700 dark:text-brand-neon text-sm font-bold flex items-center">
+                                    <i class="fa-solid fa-lightbulb mr-2"></i> Conclusión:
+                                </p>
+                                <p class="text-gray-600 dark:text-gray-400 text-xs mt-1 pl-6">
+                                    El depósito es tu capital de inversión. No es un pago por el servicio. El dinero sigue siendo tuyo para operar.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ========================================== -->
+                <!-- ARTICULO 2: BACKTESTING -->
+                <!-- ========================================== -->
+                <article class="bg-white dark:bg-brand-card rounded-2xl overflow-hidden border border-gray-200 dark:border-white/5 hover:border-purple-500 dark:hover:border-purple-500 transition-all card-hover shadow-md flex flex-col group h-full">
+                    <div class="h-48 bg-slate-100 dark:bg-[#050B14] overflow-hidden relative shrink-0">
+                        <div class="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-indigo-600/10 dark:from-indigo-900/40 dark:to-purple-900/40 flex items-center justify-center">
+                            <i class="fa-solid fa-flask-vial text-5xl text-purple-400/50 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-full h-1 bg-purple-500"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex justify-between text-xs text-gray-500 mb-3">
+                            <span class="text-purple-600 dark:text-purple-400 font-semibold">Matemáticas</span>
+                            <span>Nivel: Avanzado</span>
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                            Backtesting + Valor Esperado (+EV): La Fórmula Real
+                        </h2>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3">
+                            Dejar de apostar por suerte y empezar a invertir con datos. Te enseñamos la fórmula que usan los profesionales para ganar a la banca.
+                        </p>
+                        <a class="mt-auto text-purple-600 dark:text-purple-400 text-sm font-bold hover:underline" href="backtesting-valor-esperado.html">Leer fórmula <i class="fa-solid fa-chevron-right ml-1 text-xs"></i></a>
+                    </div>
+                </article>
+
+                <!-- ========================================== -->
+                <!-- ARTICULO 3: GESTIÓN DE BANK -->
+                <!-- ========================================== -->
+                <article class="bg-white dark:bg-brand-card rounded-2xl overflow-hidden border border-gray-200 dark:border-white/5 hover:border-green-500 dark:hover:border-brand-neon transition-all card-hover shadow-md flex flex-col group h-full">
+                    <div class="h-48 bg-slate-100 dark:bg-[#050B14] overflow-hidden relative shrink-0">
+                        <div class="absolute inset-0 bg-gradient-to-br from-green-600/10 to-emerald-600/10 dark:from-green-600/20 dark:to-emerald-600/20 flex items-center justify-center">
+                            <i class="fa-solid fa-piggy-bank text-5xl text-green-500/50 dark:text-green-500/30 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-full h-1 bg-green-500 dark:bg-brand-neon"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex justify-between text-xs text-gray-500 mb-3">
+                            <span class="text-green-600 dark:text-brand-neon font-semibold">Finanzas</span>
+                            <span>Nivel: Básico</span>
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-green-600 dark:group-hover:text-brand-neon transition-colors">
+                            Gestión de Bankroll: Cómo Evitar la Ruina del Apostador
+                        </h2>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3">
+                            El 90% pierde por mala gestión, no por malos picks. Aprende a calcular tu Stake y evita quemar tu cuenta en una mala racha.
+                        </p>
+                        <a class="mt-auto text-green-600 dark:text-brand-neon text-sm font-bold hover:underline" href="gestion-bankroll.html">Leer artículo <i class="fa-solid fa-chevron-right ml-1 text-xs"></i></a>
+                    </div>
+                </article>
+
+                <!-- ========================================== -->
+                <!-- ARTICULO 4: DETECTAR ESTAFADORES -->
+                <!-- ========================================== -->
+                <article class="bg-white dark:bg-brand-card rounded-2xl overflow-hidden border border-gray-200 dark:border-white/5 hover:border-red-500 dark:hover:border-red-500/50 transition-all card-hover shadow-md flex flex-col group h-full">
+                    <div class="h-48 bg-slate-100 dark:bg-[#050B14] overflow-hidden relative shrink-0">
+                        <div class="absolute inset-0 bg-gradient-to-br from-red-600/10 to-orange-600/10 dark:from-red-900/40 dark:to-gray-900 flex items-center justify-center">
+                            <i class="fa-solid fa-user-secret text-5xl text-red-500/50 dark:text-red-500/30 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-full h-1 bg-red-500"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex justify-between text-xs text-gray-500 mb-3">
+                            <span class="text-red-600 dark:text-red-400 font-semibold">Seguridad</span>
+                            <span>Lectura: 5 min</span>
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
+                            Cómo Detectar un Tipster Estafador en 5 Minutos
+                        </h2>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3">
+                            Vendehúmos, "fixed matches" y rentabilidades imposibles. Te enseñamos las 7 señales para identificar una estafa antes de perder tu dinero.
+                        </p>
+                        <a class="mt-auto text-red-600 dark:text-red-400 text-sm font-bold hover:underline" href="como-detectar-tipster-estafador.html">Verificar ahora <i class="fa-solid fa-chevron-right ml-1 text-xs"></i></a>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- CTA Final Blog -->
+            <div class="mt-16 bg-slate-50 dark:bg-gradient-to-r dark:from-[#0A1128] dark:to-brand-card rounded-2xl p-8 md:p-12 text-center shadow-md border border-gray-200 dark:border-white/5 relative overflow-hidden transition-colors duration-300">
+                <div class="relative z-10">
+                    <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-4">¿Quieres aplicar esto y ganar dinero hoy?</h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg mb-8 max-w-2xl mx-auto font-medium">
+                        La teoría está muy bien, pero la práctica es donde se gana. Únete a nuestro canal (Gratis con registro) y recibe los picks auditados por la IA.
+                    </p>
+                    <a class="inline-block bg-green-500 dark:bg-brand-neon text-white dark:text-brand-dark font-extrabold py-4 px-8 rounded-xl shadow-sm dark:shadow-neon hover:bg-green-600 dark:hover:bg-white hover:scale-105 transition-all" href="index.html#premium">
+                        <i class="fa-brands fa-telegram mr-2"></i> UNIRME AL CANAL
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-[#02050A] py-16 border-t border-gray-200 dark:border-white/5 mt-auto relative z-20 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12 border-b border-gray-200 dark:border-white/5 pb-12">
+                <!-- Branding -->
+                <div class="lg:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <img src="favicon.png" alt="Logo" class="w-8 h-8 opacity-80">
+                        <span class="font-bold text-2xl text-gray-900 dark:text-white uppercase italic">Money<span class="text-green-600 dark:text-brand-neon">Tips</span></span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-500 text-sm leading-relaxed mb-6">
+                        Infraestructura tecnológica para la inversión deportiva. Cero intuición, puras matemáticas.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://t.me/canalmoneytips" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-brand-card flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-100 hover:text-green-700 dark:hover:bg-brand-neon dark:hover:text-brand-dark transition-all"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="https://youtube.com/@moneytipsoficial?si=hJXpdAGxHUukwsgX" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-brand-card flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-red-100 hover:text-red-600 dark:hover:bg-brand-neon dark:hover:text-brand-dark transition-all"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-brand-card flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-brand-neon dark:hover:text-brand-dark transition-all"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Links Rápidos -->
+                <div>
+                    <h3 class="text-gray-900 dark:text-white font-bold mb-6 text-sm uppercase tracking-wider">Secciones</h3>
+                    <ul class="space-y-3 text-gray-600 dark:text-gray-500 text-sm">
+                        <li><a href="index.html#inicio" class="hover:text-green-600 dark:hover:text-brand-neon transition-colors">Método</a></li>
+                        <li><a href="index.html#estadisticas" class="hover:text-green-600 dark:hover:text-brand-neon transition-colors">Histórico Oficial</a></li>
+                        <li><a href="index.html#historia" class="hover:text-green-600 dark:hover:text-brand-neon transition-colors">Sobre Mí</a></li>
+                        <li><a href="https://pronosticosmoneytips.com/blog.html" class="hover:text-green-600 dark:hover:text-brand-neon transition-colors">Blog de Inversión</a></li>
+                    </ul>
+                </div>
+
+                <!-- Soporte / Legal -->
+                <div>
+                    <h3 class="text-gray-900 dark:text-white font-bold mb-6 text-sm uppercase tracking-wider">Soporte</h3>
+                    <ul class="space-y-3 text-gray-600 dark:text-gray-500 text-sm">
+                        <li class="flex items-center gap-2"><i class="fa-brands fa-telegram text-blue-500 dark:text-brand-neon"></i> <a href="https://t.me/Money_Tips_Asistencia" target="_blank" class="hover:text-gray-900 dark:hover:text-white transition-colors">@Money_Tips_Asistencia</a></li>
+                        <li class="mt-4"><a href="index.html#modal-legal" class="hover:text-gray-900 dark:hover:text-white transition-colors underline decoration-gray-300 dark:decoration-white/20 underline-offset-4">Aviso Legal</a></li>
+                        <li><a href="index.html#modal-privacidad" class="hover:text-gray-900 dark:hover:text-white transition-colors underline decoration-gray-300 dark:decoration-white/20 underline-offset-4">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter Formulario -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-gray-900 dark:text-white font-bold mb-4 text-sm uppercase tracking-wider">Newsletter Privada</h3>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mb-4">Déjanos tu correo y usuario de Telegram para recibir avisos de apertura de plazas.</p>
+                    <form class="space-y-3" onsubmit="event.preventDefault(); alert('¡Suscripción recibida! Pronto tendrás noticias nuestras.');">
+                        <input type="email" placeholder="Tu correo electrónico" required class="w-full bg-slate-50 dark:bg-[#050B14] border border-gray-300 dark:border-white/10 rounded-lg px-4 py-2 text-sm text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-green-500 dark:focus:border-brand-neon transition-colors">
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 dark:text-gray-500 text-sm">@</span>
+                            <input type="text" placeholder="Usuario de Telegram" required class="w-full bg-slate-50 dark:bg-[#050B14] border border-gray-300 dark:border-white/10 rounded-lg pl-8 pr-4 py-2 text-sm text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-green-500 dark:focus:border-brand-neon transition-colors">
+                        </div>
+                        <button type="submit" class="w-full bg-green-500 dark:bg-brand-neon hover:bg-green-600 dark:hover:bg-white text-white dark:text-brand-dark font-bold text-sm py-2.5 rounded-lg transition-colors shadow-sm dark:shadow-neon">
+                            Inscribirme
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 dark:text-gray-600">
+                <p>&copy; 2026 Money Tips Ecosistema. Todos los derechos reservados.</p>
+                <div class="mt-4 md:mt-0">
+                     <span class="flex items-center gap-2">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Juega con responsabilidad. +18.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT DE FUNCIONALIDAD DEL BOTÓN -->
+    <script>
         function toggleTransparency(btn) {
             const content = document.getElementById('transparencia-details');
-            const icon = btn.querySelector('i');
+            const icon = btn.querySelector('i.fa-chevron-down, i.fa-chevron-up');
             const textSpan = btn.querySelector('.btn-text');
 
             if (content.classList.contains('hidden')) {
@@ -347,7 +431,7 @@
                 content.classList.add('animate-fadeIn');
 
                 // Cambiar texto e icono
-                textSpan.textContent = 'Ocultar explicaci'f3n';
+                textSpan.textContent = 'Ocultar explicación';
                 icon.classList.remove('fa-chevron-down');
                 icon.classList.add('fa-chevron-up');
 
@@ -357,13 +441,14 @@
                 content.classList.remove('animate-fadeIn');
 
                 // Restaurar texto e icono
-                textSpan.textContent = 'Leer explicaci'f3n completa';
+                textSpan.textContent = 'Leer explicación completa';
                 icon.classList.remove('fa-chevron-up');
                 icon.classList.add('fa-chevron-down');
             }
         }
     </script>
-<script>
+    
+    <script>
         // Lógica del Theme Toggle (Modo Claro/Oscuro)
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
@@ -408,7 +493,6 @@
                     document.documentElement.classList.remove('dark');
                     localStorage.setItem('theme', 'light');
                 }
-            // if NOT set via local storage previously
             } else {
                 if (document.documentElement.classList.contains('dark')) {
                     document.documentElement.classList.remove('dark');
@@ -422,45 +506,6 @@
 
         themeToggleBtn.addEventListener('click', handleThemeToggle);
         themeToggleBtnMobile.addEventListener('click', handleThemeToggle);
-
-        // Modal toggler global
-        function toggleModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal.classList.contains('active')) {
-                modal.classList.remove('active');
-                document.body.classList.remove('modal-open');
-            } else {
-                modal.classList.add('active');
-                document.body.classList.add('modal-open');
-            }
-        }
-
-        // Logic for Iframes Tabs
-        function showIframe(id) {
-            const tabs = ['global', 't2526', 't2425', 't2324'];
-
-            tabs.forEach(tab => {
-                const iframeContainer = document.getElementById('iframe-' + tab);
-                iframeContainer.classList.remove('opacity-100', '', 'z-10');
-                iframeContainer.classList.add('opacity-0', '', 'z-0');
-
-                const btn = document.getElementById('btn-' + tab);
-                // Limpiar clases activas tanto de modo claro como oscuro
-                btn.classList.remove('text-green-600', 'dark:text-brand-neon', 'border-green-500', 'dark:border-brand-neon', 'bg-white', 'dark:bg-white/5', 'font-bold');
-                btn.classList.add('text-gray-500', 'dark:text-gray-400', 'border-transparent', 'font-semibold');
-            });
-
-            const activeContainer = document.getElementById('iframe-' + id);
-            activeContainer.classList.remove('opacity-0', '', 'z-0');
-            activeContainer.classList.add('opacity-100', '', 'z-10');
-
-            const activeBtn = document.getElementById('btn-' + id);
-            activeBtn.classList.remove('text-gray-500', 'dark:text-gray-400', 'border-transparent', 'font-semibold');
-            activeBtn.classList.add('text-green-600', 'dark:text-brand-neon', 'border-green-500', 'dark:border-brand-neon', 'bg-white', 'dark:bg-white/5', 'font-bold');
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            showIframe('global');
-        });
-    </script></body>
+    </script>
+</body>
 </html>
