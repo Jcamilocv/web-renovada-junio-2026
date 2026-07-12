@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth dark"> <!-- Se inicializa con la clase 'dark' por defecto -->
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,45 +15,36 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Favicon / Logo -->
-    <link rel="icon" type="image/png" href="favicon.png?v=2">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
     
     <script>
         tailwind.config = {
-            darkMode: 'class', // Habilitamos la gestión del modo oscuro mediante clases
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
                     },
                     colors: {
                         brand: {
-                            // Modo Oscuro (Predeterminado de tu web)
-                            dark: '#050B14',      // Fondo principal
-                            card: '#0A1128',      // Fondo de tarjetas
-                            cardHover: '#121C3A', // Hover tarjetas
-                            
-                            // Modo Claro (Inspirado en Money Matched Pro)
-                            lightBg: '#F8FAFC',   // Fondo principal claro (slate-50)
-                            lightCard: '#FFFFFF', // Fondo tarjetas claro
-                            lightText: '#0F172A', // Texto principal claro
-                            lightTextMuted: '#64748B', // Texto secundario claro
-                            
-                            // Acentos
-                            neon: '#00F59B',      // Verde Money
-                            neonDim: 'rgba(0, 245, 155, 0.15)',
-                            light: '#E2E8F0',
-                            muted: '#94A3B8',
+                            dark: '#0A1128',
+                            card: '#121C3A',
+                            lightBg: '#F8FAFC',
+                            lightCard: '#FFFFFF',
+                            lightText: '#0F172A',
+                            neon: '#00F59B',
+                            gold: '#FBBF24', // Dorado para el servicio VIP
+                            goldDark: '#B45309'
                         }
                     },
                     boxShadow: {
                         'neon': '0 0 15px rgba(0, 245, 155, 0.3)',
                         'neon-strong': '0 0 25px rgba(0, 245, 155, 0.5)',
-                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
-                        'light-card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)' // Sombra sutil para el modo claro
+                        'gold': '0 0 20px rgba(251, 191, 36, 0.2)',
+                        'gold-strong': '0 0 30px rgba(251, 191, 36, 0.4)'
                     }
                 }
             }
@@ -61,8 +52,6 @@
     </script>
 
     <script>
-        // Lógica de detección de tema inicial para evitar parpadeos
-        // Ejecutamos esto lo antes posible en el <head>
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
@@ -71,48 +60,37 @@
     </script>
 
     <style>
-        /* Estilos base que dependen del modo (Claro/Oscuro) usando directivas de Tailwind en el body */
-        
         .text-gradient {
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-image: linear-gradient(to right, #ffffff, #00F59B);
         }
-        
-        /* En modo claro, ajustamos el gradiente para que se lea mejor */
         html:not(.dark) .text-gradient {
-            background-image: linear-gradient(to right, #0F172A, #059669); /* Texto oscuro a verde esmeralda más profundo */
-        }
-
-        .glass-panel {
-            background: rgba(10, 17, 40, 0.85);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background-image: linear-gradient(to right, #0F172A, #059669);
         }
         
-        html:not(.dark) .glass-panel {
-            background: rgba(255, 255, 255, 0.9); /* Más opaco y claro */
-            border: 1px solid rgba(0, 0, 0, 0.05);
+        .gold-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #FDE68A, #D97706);
         }
 
-        /* Custom scrollbar adaptativa */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #F8FAFC; }
         ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
-        
-        html.dark ::-webkit-scrollbar-track { background: #050B14; }
+        html.dark ::-webkit-scrollbar-track { background: #0A1128; }
         html.dark ::-webkit-scrollbar-thumb { background: #121C3A; }
         html.dark ::-webkit-scrollbar-thumb:hover { background: #00F59B; }
         
-        /* Modals */
         body.modal-open { overflow: hidden; }
         .custom-modal {
             transition: opacity 0.3s ease-in-out;
             opacity: 0;
             pointer-events: none;
-            z-index: 100;
+            z-index: 10000;
         }
         .custom-modal.active {
             opacity: 1;
@@ -122,51 +100,49 @@
 </head>
 <body class="antialiased font-sans flex flex-col min-h-screen bg-brand-lightBg dark:bg-brand-dark text-brand-lightText dark:text-gray-200 transition-colors duration-300">
 
-    <nav class="fixed top-0 w-full z-[9999] glass-panel border-b border-gray-200 dark:border-white/5 transition-all duration-300 pointer-events-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <nav class="fixed top-0 w-full z-[9999] bg-white/90 dark:bg-brand-dark/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center cursor-pointer hover:opacity-80 transition-opacity gap-3" onclick="window.location.href='#'">
                     <img src="favicon.png" alt="Money Tips Logo" class="w-10 h-10 object-contain">
-                    <span class="font-bold text-3xl tracking-tight text-[#22C55E] dark:text-[#00F59B]">Money<span class="text-[#51E3A2] dark:text-[#51E3A2]">Tips</span></span>
+                    <span class="font-bold text-3xl tracking-tight text-[#22C55E] dark:text-[#00F59B]">Money<span class="text-[#51E3A2]">Tips</span></span>
                 </div>
                 
                 <!-- Desktop Menu -->
-                <div class="hidden lg:flex items-center space-x-6 relative z-10 pointer-events-auto">
-                    <a href="#inicio" class="text-sm font-medium hover:text-brand-neon transition-colors">Método</a>
-                    <a href="#estadisticas" class="text-sm font-medium hover:text-brand-neon transition-colors">Histórico Oficial</a>
-                    <a href="#historia" class="text-sm font-medium hover:text-brand-neon transition-colors">Sobre Mí</a>
-                    <a href="#ecosistema" class="text-sm font-medium hover:text-brand-neon transition-colors">Ecosistema</a>
-                    <!-- Enlace funcional al Blog -->
-                    <a href="https://pronosticosmoneytips.com/blog.html" class="text-sm font-medium hover:text-brand-neon transition-colors">Blog</a>
+                <div class="hidden lg:flex items-center space-x-6">
+                    <a href="#inicio" class="text-sm font-semibold hover:text-green-600 dark:hover:text-brand-neon transition-colors">Método</a>
+                    <a href="#estadisticas" class="text-sm font-semibold hover:text-green-600 dark:hover:text-brand-neon transition-colors">Histórico Oficial</a>
+                    <a href="#historia" class="text-sm font-semibold hover:text-green-600 dark:hover:text-brand-neon transition-colors">Sobre Mí</a>
+                    <a href="#herramientas" class="text-sm font-semibold hover:text-green-600 dark:hover:text-brand-neon transition-colors">Herramientas</a>
+                    <a href="https://pronosticosmoneytips.com/blog.html" class="text-sm font-semibold hover:text-green-600 dark:hover:text-brand-neon transition-colors">Blog</a>
                     
-                    <!-- Theme Toggle Button (Sol/Luna) -->
-                    <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none rounded-lg text-sm p-2.5 transition-colors">
+                    <!-- Theme Toggle Button -->
+                    <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none rounded-lg text-sm p-2.5 transition-colors">
                         <i id="theme-toggle-dark-icon" class="hidden fa-solid fa-moon text-lg"></i>
                         <i id="theme-toggle-light-icon" class="hidden fa-solid fa-sun text-lg"></i>
                     </button>
 
                     <!-- Social Icons -->
-                    <div class="flex items-center space-x-4 border-l border-gray-300 dark:border-white/10 pl-6 mx-2">
-                        <a href="https://t.me/canalmoneytips" target="_blank" class="text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors relative z-20"><i class="fa-brands fa-telegram text-xl"></i></a>
-                        <!-- (Pendiente añadir enlaces reales de YT y X si los necesitas aquí arriba) -->
-                        <a href="#" target="_blank" class="text-gray-500 dark:text-gray-400 hover:text-red-500 transition-colors relative z-20"><i class="fa-brands fa-youtube text-xl"></i></a>
-                        <a href="#" target="_blank" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors relative z-20"><i class="fa-brands fa-x-twitter text-xl"></i></a>
+                    <div class="flex items-center space-x-4 border-l border-gray-300 dark:border-gray-700 pl-6 mx-2">
+                        <a href="https://t.me/canalmoneytips" target="_blank" class="text-gray-500 dark:text-gray-400 hover:text-blue-500 transition-colors"><i class="fa-brands fa-telegram text-xl"></i></a>
+                        <a href="https://youtube.com/@moneytipsoficial?si=hJXpdAGxHUukwsgX" target="_blank" class="text-gray-500 dark:text-gray-400 hover:text-red-500 transition-colors"><i class="fa-brands fa-youtube text-xl"></i></a>
+                        <a href="#" target="_blank" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-x-twitter text-xl"></i></a>
                     </div>
 
-                    <!-- Botón "Acceso IA" que lleva a la sección premium (Plazas cerradas) -->
-                    <a href="#premium" class="bg-brand-neon hover:bg-green-400 dark:hover:bg-white text-gray-900 dark:text-brand-dark px-5 py-2.5 rounded-lg text-sm font-bold transition-all shadow-neon hover:shadow-neon-strong transform hover:-translate-y-0.5 relative z-20 pointer-events-auto">
+                    <!-- Botón Acceso IA -->
+                    <a href="#premium" class="bg-brand-neon hover:bg-green-400 dark:hover:bg-white text-gray-900 dark:text-brand-dark px-5 py-2.5 rounded-lg text-sm font-bold transition-all shadow-sm dark:shadow-neon transform hover:-translate-y-0.5">
                         <i class="fa-solid fa-robot mr-2"></i>Acceso IA
                     </a>
                 </div>
 
                 <!-- Mobile menu button & Theme toggle -->
-                <div class="flex lg:hidden items-center gap-4 relative z-20">
+                <div class="flex lg:hidden items-center gap-4">
                      <button id="theme-toggle-mobile" type="button" class="text-gray-500 dark:text-gray-400 focus:outline-none rounded-lg text-sm p-2">
                         <i id="theme-toggle-dark-icon-mobile" class="hidden fa-solid fa-moon text-lg"></i>
                         <i id="theme-toggle-light-icon-mobile" class="hidden fa-solid fa-sun text-lg"></i>
                     </button>
-                    <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" type="button" class="text-gray-500 dark:text-gray-400 hover:text-brand-neon focus:outline-none p-2 pointer-events-auto">
+                    <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" type="button" class="text-gray-500 dark:text-gray-400 hover:text-green-600 dark:hover:text-brand-neon focus:outline-none p-2">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
@@ -174,22 +150,21 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div class="hidden lg:hidden bg-white dark:bg-brand-card border-b border-gray-200 dark:border-white/5 absolute w-full z-50 top-full left-0 shadow-2xl" id="mobile-menu">
+        <div class="hidden lg:hidden bg-white dark:bg-brand-dark border-b border-gray-200 dark:border-gray-800 absolute w-full shadow-2xl" id="mobile-menu">
             <div class="px-4 pt-4 pb-6 space-y-2">
-                <a href="#inicio" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="text-gray-700 dark:text-gray-300 hover:text-brand-neon block px-3 py-2 rounded-md text-base font-medium">Método</a>
-                <a href="#estadisticas" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="text-gray-700 dark:text-gray-300 hover:text-brand-neon block px-3 py-2 rounded-md text-base font-medium">Histórico Oficial</a>
-                <a href="#historia" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="text-gray-700 dark:text-gray-300 hover:text-brand-neon block px-3 py-2 rounded-md text-base font-medium">Sobre Mí</a>
-                <a href="https://pronosticosmoneytips.com/blog.html" class="text-gray-700 dark:text-gray-300 hover:text-brand-neon block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+                <a href="#inicio" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-brand-neon block px-3 py-2 rounded-md text-base font-medium">Método</a>
+                <a href="#estadisticas" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-brand-neon block px-3 py-2 rounded-md text-base font-medium">Histórico Oficial</a>
+                <a href="#historia" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-brand-neon block px-3 py-2 rounded-md text-base font-medium">Sobre Mí</a>
+                <a href="#herramientas" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-brand-neon block px-3 py-2 rounded-md text-base font-medium">Herramientas</a>
+                <a href="https://pronosticosmoneytips.com/blog.html" class="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-brand-neon block px-3 py-2 rounded-md text-base font-medium">Blog</a>
                 <a href="#premium" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="text-gray-900 dark:text-brand-dark bg-brand-neon block px-3 py-2 rounded-md text-base font-bold text-center mt-4">Acceso IA</a>
             </div>
         </div>
     </nav>
 
     <section id="inicio" class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden min-h-[90vh] flex items-center">
-        <!-- Background Glow Oscuro -->
+        <!-- Background Glow -->
         <div class="hidden dark:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-neon opacity-5 rounded-full blur-[120px] pointer-events-none z-0"></div>
-        <!-- Background Glow Claro -->
-        <div class="block dark:hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500 opacity-5 rounded-full blur-[120px] pointer-events-none z-0"></div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
             <div class="flex flex-col lg:flex-row items-center gap-16">
@@ -203,120 +178,110 @@
                         Sistema Random Forest Operativo
                     </div>
                     
-                    <!-- Eliminadas las estadísticas redundantes aquí. Foco en el mensaje. -->
-                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 dark:text-white leading-[1.1] mb-6 tracking-tight pointer-events-none">
-                        Invierte en apuestas deportivas.<br>
-                        <span class="text-gradient">Con cero intuición.</span>
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 dark:text-white leading-[1.1] mb-6 tracking-tight">
+                        Invierte en deporte.<br>
+                        <span class="text-gradient">Cero intuición.</span>
                     </h1>
                     
-                    <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-10 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed pointer-events-none">
+                    <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-10 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
                         Ganar dinero en las apuestas no consiste en elegir ganadores, consiste en detectar ineficiencias en las cuotas. Utilizamos Machine Learning (IA) y datos históricos para calcular probabilidades reales y encontrar Valor Esperado Positivo (+EV).
                     </p>
                     
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <a href="https://t.me/canalmoneytips" target="_blank" class="px-8 py-4 bg-brand-neon hover:bg-green-400 dark:hover:bg-white text-gray-900 dark:text-brand-dark font-extrabold rounded-xl transition-all transform hover:-translate-y-1 shadow-neon text-center text-lg flex items-center justify-center relative z-30 pointer-events-auto">
-                            <i class="fa-brands fa-telegram mr-2 text-xl"></i> Unirse Ahora
+                        <a href="https://t.me/canalmoneytips" target="_blank" class="px-8 py-4 bg-brand-neon hover:bg-green-400 dark:hover:bg-white text-gray-900 dark:text-brand-dark font-extrabold rounded-xl transition-all transform hover:-translate-y-1 shadow-sm dark:shadow-neon text-center text-lg flex items-center justify-center">
+                            <i class="fa-brands fa-telegram mr-2 text-xl"></i> Unirse Gratis
                         </a>
-                        <a href="#estadisticas" class="px-8 py-4 bg-white dark:bg-transparent hover:bg-gray-50 dark:hover:bg-white/5 border border-gray-300 dark:border-white/20 text-gray-800 dark:text-white font-semibold rounded-xl transition-all shadow-sm text-center flex items-center justify-center gap-2 relative z-30 pointer-events-auto">
+                        <a href="#estadisticas" class="px-8 py-4 bg-white dark:bg-transparent hover:bg-gray-50 dark:hover:bg-white/5 border border-gray-300 dark:border-white/20 text-gray-800 dark:text-white font-semibold rounded-xl transition-all shadow-sm text-center flex items-center justify-center gap-2">
                             <i class="fa-solid fa-chart-line"></i> Ver Rentabilidad
                         </a>
                     </div>
                 </div>
 
-                <!-- Right Content (Avatar Image) -->
-                <div class="w-full lg:w-1/2 flex justify-center relative z-10 pointer-events-none">
-                    <div class="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden border border-gray-200 dark:border-white/10 shadow-xl dark:shadow-glass group bg-gray-100 dark:bg-transparent">
-                        <img src="watermarked_img_1638095033145218793.png" alt="CEO Money Tips" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.src='https://placehold.co/600x800/0A1128/00F59B?text=Money+Tips'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent dark:from-[#050B14]"></div>
+                <!-- Right Content (Avatar Image) Restaurado -->
+                <div class="w-full lg:w-1/2 flex justify-center relative z-10">
+                    <div class="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden shadow-xl dark:shadow-2xl group bg-transparent">
+                        <img src="watermarked_img_1638095033145218793.jpg" alt="CEO Money Tips" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.src='https://placehold.co/600x800/121C3A/00F59B?text=Avatar+Money+Tips'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-lightBg via-transparent to-transparent dark:from-brand-dark opacity-80 dark:opacity-100"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="estadisticas" class="py-24 bg-white dark:bg-brand-card border-y border-gray-200 dark:border-white/5 relative z-10 transition-colors duration-300">
+    <section id="estadisticas" class="py-24 bg-white dark:bg-brand-card border-y border-gray-200 dark:border-gray-800 relative z-10 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <div class="inline-flex items-center gap-2 mb-4">
-                    <i class="fas fa-chart-line text-brand-neon text-2xl"></i>
+                    <i class="fas fa-chart-line text-green-600 dark:text-brand-neon text-2xl"></i>
                 </div>
                 <h2 class="text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">Histórico Consolidado</h2>
                 <p class="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto text-lg leading-relaxed">
-                    Transparencia absoluta. Todas nuestras operaciones registradas y compartidas: desde nuestra etapa de análisis manual hasta la adopción total del Machine Learning (IA).
+                    Transparencia absoluta. Suma de todas las operaciones registradas: desde nuestra etapa de análisis manual hasta la adopción total del Machine Learning (IA).
                 </p>
             </div>
 
-            <!-- Panel de Estadísticas Totales (Métricas Principales) -->
-            <div class="bg-slate-50 dark:bg-[#050B14] rounded-3xl border border-gray-200 dark:border-white/10 shadow-lg dark:shadow-glass p-8 md:p-12 mb-12 relative overflow-hidden transition-colors duration-300">
-                <div class="hidden dark:block absolute top-0 right-0 w-64 h-64 bg-brand-neon/5 rounded-full blur-3xl pointer-events-none"></div>
-                
+            <div class="bg-slate-50 dark:bg-[#050B14] rounded-3xl border border-gray-200 dark:border-white/10 shadow-lg p-8 md:p-12 mb-12 relative overflow-hidden transition-colors duration-300">
                 <h3 class="text-xl font-bold text-gray-800 dark:text-gray-300 mb-8 uppercase tracking-wider text-center border-b border-gray-200 dark:border-white/10 pb-4">
                     Balance Acumulado (Temporadas 23/24 - 25/26)
                 </h3>
                 
-                <!-- Añadido el 4º bloque: Inversión Media -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center mb-10">
-                    <div class="p-6 bg-white dark:bg-brand-card rounded-2xl border border-green-200 dark:border-brand-neon/20 shadow-md dark:shadow-inner transition-colors duration-300">
+                    <div class="p-6 bg-white dark:bg-brand-card rounded-2xl border border-green-200 dark:border-brand-neon/20 shadow-sm transition-colors duration-300">
                         <div class="text-sm text-gray-500 font-bold uppercase mb-2">Beneficio Neto Total</div>
                         <div class="text-4xl md:text-5xl font-black text-green-600 dark:text-brand-neon">+15.800 €</div>
                     </div>
                     <div class="p-6 bg-white dark:bg-brand-card rounded-2xl border border-gray-200 dark:border-white/5 shadow-sm transition-colors duration-300">
-                        <div class="text-sm text-gray-500 font-bold uppercase mb-2">Total Operaciones (Picks)</div>
+                        <div class="text-sm text-gray-500 font-bold uppercase mb-2">Total Operaciones</div>
                         <div class="text-4xl font-bold text-gray-800 dark:text-white">+1.500</div>
                     </div>
                     <div class="p-6 bg-white dark:bg-brand-card rounded-2xl border border-gray-200 dark:border-white/5 shadow-sm transition-colors duration-300">
                         <div class="text-sm text-gray-500 font-bold uppercase mb-2">Yield Promedio Global</div>
                         <div class="text-4xl font-bold text-gray-800 dark:text-white">~6.36%</div>
                     </div>
-                    <!-- NUEVO DATO -->
                     <div class="p-6 bg-white dark:bg-brand-card rounded-2xl border border-gray-200 dark:border-white/5 shadow-sm transition-colors duration-300">
                         <div class="text-sm text-gray-500 font-bold uppercase mb-2">Inversión Media x Pick</div>
                         <div class="text-4xl font-bold text-gray-800 dark:text-white">170 €</div>
                     </div>
                 </div>
 
-                <!-- Desglose por Eras (Tal cual solicitaste que no se tocara) -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <!-- Era Manual -->
                     <div class="bg-gray-100 dark:bg-brand-card/50 p-6 rounded-xl border border-gray-200 dark:border-white/5 transition-colors duration-300">
                         <div class="flex items-center gap-3 mb-4">
                             <i class="fa-solid fa-user-gear text-gray-500 dark:text-gray-400 text-xl"></i>
-                            <h4 class="font-bold text-gray-900 dark:text-white">Era Análisis Manual</h4>
+                            <h3 class="font-bold text-gray-900 dark:text-white">Era Análisis Manual</h3>
                             <span class="text-xs bg-gray-200 dark:bg-white/10 text-gray-600 dark:text-gray-400 px-2 py-1 rounded font-medium">23/24 y 24/25</span>
                         </div>
                         <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Análisis intensivo de datos, lesiones y contextos. Muy rentable, pero humanamente insostenible a gran volumen.</p>
                         <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
                             <li class="flex justify-between border-b border-gray-200 dark:border-white/5 pb-1">
-                                <span>Mercados Globales de Fútbol (568 picks):</span> <strong class="text-gray-900 dark:text-white">Yield 5%</strong>
+                                <span>Mercados Globales (741 picks):</span> <strong class="text-gray-900 dark:text-white">Yield 5%</strong>
                             </li>
                             <li class="flex justify-between pb-1">
-                                <span>Top Ligas (447 picks):</span> <strong class="text-gray-900 dark:text-white">Yield 5.92%</strong>
+                                <span>Top Ligas (422 picks):</span> <strong class="text-gray-900 dark:text-white">Yield 7.54%</strong>
                             </li>
                         </ul>
                     </div>
 
-                    <!-- Era IA -->
-                    <div class="bg-green-50 dark:bg-brand-neon/5 p-6 rounded-xl border border-green-200 dark:border-brand-neon/20 relative overflow-hidden transition-colors duration-300">
-                         <div class="hidden dark:block absolute -right-4 -bottom-4 w-24 h-24 bg-brand-neon/10 rounded-full blur-xl pointer-events-none"></div>
-                        <div class="flex items-center gap-3 mb-4 relative z-10">
+                    <div class="bg-green-50 dark:bg-brand-neon/5 p-6 rounded-xl border border-green-200 dark:border-brand-neon/20 transition-colors duration-300">
+                        <div class="flex items-center gap-3 mb-4">
                             <i class="fa-solid fa-robot text-green-600 dark:text-brand-neon text-xl"></i>
-                            <h4 class="font-bold text-gray-900 dark:text-white">Era Machine Learning (IA)</h4>
+                            <h3 class="font-bold text-gray-900 dark:text-white">Era Machine Learning (IA)</h3>
                             <span class="text-xs bg-green-200 dark:bg-brand-neon/20 text-green-800 dark:text-brand-neon px-2 py-1 rounded font-bold">Temp. 25/26</span>
                         </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 relative z-10">Implementación de modelos Random Forest. Detección masiva de ineficiencias en milisegundos. Escalabilidad total.</p>
-                        <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300 relative z-10">
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Implementación de modelos Random Forest. Detección masiva de ineficiencias en milisegundos. Escalabilidad total.</p>
+                        <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
                             <li class="flex justify-between border-b border-green-200/50 dark:border-white/5 pb-1">
                                 <span>Beneficio Temporada IA:</span> <strong class="text-green-600 dark:text-brand-neon text-lg">+6.851,24 €</strong>
                             </li>
                             <li class="flex justify-between pb-1">
-                                <span>Volumen (506 picks):</span> <strong class="text-gray-900 dark:text-white">Yield 8.33%</strong>
+                                <span>Volumen (617 picks):</span> <strong class="text-gray-900 dark:text-white">Yield 6.54%</strong>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="w-full mt-12 bg-white dark:bg-[#050B14] rounded-3xl border border-gray-200 dark:border-white/10 shadow-xl dark:shadow-glass overflow-hidden transition-colors duration-300">
+            <div class="w-full mt-12 bg-white dark:bg-[#050B14] rounded-3xl border border-gray-200 dark:border-white/10 shadow-xl overflow-hidden transition-colors duration-300">
                 <!-- Tabs Header -->
                 <div class="flex flex-col sm:flex-row border-b border-gray-200 dark:border-white/10 relative z-20 bg-slate-50 dark:bg-transparent">
                     <button onclick="showIframe('global')" id="btn-global" class="flex-1 py-4 px-4 text-center font-bold text-green-600 dark:text-brand-neon border-b-2 border-green-500 dark:border-brand-neon bg-white dark:bg-white/5 transition-all text-sm uppercase tracking-wider focus:outline-none">Histórico Global</button>
@@ -325,8 +290,6 @@
                     <button onclick="showIframe('t2324')" id="btn-t2324" class="flex-1 py-4 px-4 text-center font-semibold text-gray-500 dark:text-gray-400 border-b-2 border-transparent hover:text-gray-900 hover:bg-white dark:hover:text-white dark:hover:bg-white/5 transition-all text-sm uppercase tracking-wider focus:outline-none">23/24</button>
                 </div>
 
-                <!-- Iframes Containers -->
-                <!-- Nota: En modo claro, los iframes con background "transparent" se apoyarán sobre el bg-slate-100 -->
                 <div class="p-2 md:p-6 w-full overflow-hidden bg-slate-100 dark:bg-brand-card/30 relative z-10 min-h-[700px] transition-colors duration-300">
                     <div id="iframe-global" class="w-full transition-opacity duration-300 absolute inset-0 p-2 md:p-6 opacity-100 pointer-events-auto z-10">
                         <iframe src="https://app.pronosticosmoneytips.com/?s=UnZwN3FhUUJDNVJRd1NLSUNSS25BYjh2YUk5M3xmdkV1a0xLaFRDQWhQTXIwTHRiMw==&embed=true" width="100%" height="700" style="border:none; border-radius: 16px; overflow:hidden; background: transparent;"></iframe>
@@ -342,7 +305,7 @@
                     </div>
                 </div>
                 
-                <div class="bg-slate-50 dark:bg-brand-card/80 py-4 text-center border-t border-gray-200 dark:border-white/5 flex items-center justify-center gap-2 relative z-20 transition-colors duration-300">
+                <div class="bg-slate-50 dark:bg-brand-card/80 py-4 text-center border-t border-gray-200 dark:border-white/5 flex items-center justify-center gap-2 transition-colors duration-300">
                      <span class="relative flex h-2 w-2">
                           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 dark:bg-brand-neon opacity-75"></span>
                           <span class="relative inline-flex rounded-full h-2 w-2 bg-green-600 dark:bg-brand-neon"></span>
@@ -353,102 +316,77 @@
         </div>
     </section>
 
-    <section id="historia" class="py-24 bg-brand-lightBg dark:bg-[#050B14] transition-colors duration-300">
+    <section id="historia" class="py-24 bg-brand-lightBg dark:bg-[#050B14] transition-colors duration-300 border-y border-gray-200 dark:border-white/5">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-10 text-center">La evolución de un inversor</h2>
             
             <div class="space-y-6 text-lg text-gray-700 dark:text-gray-400 leading-relaxed">
-                <p>
-                    Mi historia con las apuestas empezó exactamente igual que la de la mayoría de personas. Buscando apuestas "seguras", persiguiendo cuotas altas para intentar dar el pelotazo y creyendo que detrás del siguiente pronóstico estaba la solución definitiva. También pasé por grupos de Telegram, seguí a supuestos expertos y cometí prácticamente todos los errores que puede cometer un apostador que está empezando.
-                </p>
-                <p>
-                    <strong>Perdí dinero. Perdí tiempo.</strong> Y, sobre todo, aprendí que la mayoría de personas que hablan de apuestas realmente no entienden cómo funcionan.
-                </p>
-                <p>
-                    Sin embargo, había algo que no terminaba de encajarme. Siempre he tenido una mentalidad muy analítica. Me gustan los números, la lógica y encontrar explicaciones a las cosas. Y cuanto más investigaba este mundo, más me daba cuenta de que la mayoría de apostadores tomaban decisiones basándose en emociones, intuiciones o resultados recientes.
-                </p>
-                <p class="text-xl font-medium text-gray-900 dark:text-white">
-                    Hasta que un día entendí algo que cambió por completo mi forma de ver las apuestas. Entendí que una cuota no es una opinión. <span class="text-green-600 dark:text-brand-neon font-bold">Una cuota es una probabilidad.</span> Y cuando comprendí eso, todo empezó a tener sentido.
+                <p>Mi historia con las apuestas empezó exactamente igual que la de la mayoría de personas.</p>
+                <p>Buscando apuestas "seguras", persiguiendo cuotas altas para intentar dar el pelotazo y creyendo que detrás del siguiente pronóstico estaba la solución definitiva. También pasé por grupos de Telegram, seguí a supuestos expertos y cometí prácticamente todos los errores que puede cometer un apostador que está empezando.</p>
+                <p><strong>Perdí dinero. Perdí tiempo.</strong> Y, sobre todo, aprendí que la mayoría de personas que hablan de apuestas realmente no entienden cómo funcionan.</p>
+                <p>Sin embargo, había algo que no terminaba de encajarme. Siempre he tenido una mentalidad muy analítica. Me gustan los números, la lógica y encontrar explicaciones a las cosas. Y cuanto más investigaba este mundo, más me daba cuenta de que la mayoría de apostadores tomaban decisiones basándose en emociones, intuiciones o resultados recientes.</p>
+                
+                <p class="text-xl font-medium text-gray-900 dark:text-white border-l-4 border-green-500 dark:border-brand-neon pl-4 py-2 my-8">
+                    Hasta que un día entendí algo que cambió por completo mi forma de ver las apuestas. Entendí que una cuota no es una opinión. <strong>Una cuota es una probabilidad.</strong> Y cuando comprendí eso, todo empezó a tener sentido.
                 </p>
                 
-                <div class="p-6 bg-white dark:bg-brand-card border-l-4 border-green-500 dark:border-brand-neon rounded-r-xl my-8 relative overflow-hidden group shadow-sm transition-colors duration-300">
-                    <div class="hidden dark:block absolute inset-0 bg-brand-neon/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <p class="italic text-gray-800 dark:text-gray-300 text-base relative z-10">"Recuerdo perfectamente el momento en que aprendí que no debía apostar a una cuota 1.59 algo que matemáticamente solo tenía valor a partir de 1.60. Puede parecer una diferencia insignificante, pero fue un antes y un después. Dejé de buscar apuestas ganadoras y empecé a buscar apuestas con Valor Esperado Positivo (+EV)."</p>
-                </div>
+                <p>Recuerdo perfectamente el momento en que aprendí que <em>no debía apostar a una cuota 1.59 algo que matemáticamente solo tenía valor a partir de 1.60</em>. Puede parecer una diferencia insignificante, pero fue un antes y un después. Dejé de buscar apuestas ganadoras y empecé a buscar apuestas con <strong>Valor Esperado Positivo (+EV)</strong>.</p>
 
                 <!-- Contenedor del Botón (Visible por defecto) -->
-                <div class="flex justify-center my-8" id="historia-btn-container">
-                    <button class="inline-flex items-center bg-green-50 dark:bg-brand-neon/10 text-green-700 dark:text-brand-neon px-6 py-3 rounded-xl font-bold hover:bg-green-100 dark:hover:bg-brand-neon dark:hover:text-brand-dark transition-all w-fit cursor-pointer group border border-green-200 dark:border-transparent shadow-sm" onclick="toggleHistoria(this)">
-                        <span class="btn-text">Leer mi historia completa</span> <i class="fa-solid fa-chevron-down ml-2 group-hover:translate-y-0.5 transition-transform"></i>
+                <div class="flex justify-center my-10" id="historia-btn-container">
+                    <button class="inline-flex items-center bg-white dark:bg-brand-card text-gray-900 dark:text-white px-8 py-4 rounded-xl font-bold hover:text-green-600 dark:hover:text-brand-neon transition-all w-fit cursor-pointer group border border-gray-200 dark:border-white/10 shadow-sm" onclick="toggleHistoria(this)">
+                        <span class="btn-text">Leer mi historia completa</span> <i class="fa-solid fa-chevron-down ml-3 group-hover:translate-y-1 transition-transform"></i>
                     </button>
                 </div>
 
                 <!-- Contenido Oculto Desplegable -->
-                <div id="historia-details" class="hidden space-y-6">
-                    <p>
-                        Ese cambio de mentalidad lo transformó todo. A partir de ahí comencé a registrar absolutamente todas mis apuestas y a tomar decisiones únicamente basadas en datos. Durante mi primera temporada analicé mercados de todo el mundo. No me importaba si un partido se jugaba en Europa, Asia o Sudamérica. Mi objetivo era encontrar valor allí donde apareciera.
-                    </p>
-                    <p>
-                        Aquella primera mitad de temporada terminé con un Yield cercano al 5% después de 568 apuestas (imagínate las horas dedicadas) registradas pública y gratuitamente. No era un resultado espectacular para vender humo en redes sociales. <strong>Era mucho mejor. Era real.</strong>
-                    </p>
-                    <p>
-                        Con el paso del tiempo llegaron también los problemas habituales de cualquier apostador rentable: limitaciones y cierres de cuentas. Eso me obligó a replantear mi enfoque. Decidí concentrarme en las ligas más importantes de Europa, mercados con mucha más liquidez y donde era más sencillo operar a largo plazo. Los resultados siguieron llegando. Hasta finales de 2025 conseguí mantener un Yield del 5,37% en más de mil apuestas trabajando de forma completamente manual.
-                    </p>
-                    <p>
-                        <strong>Pero había un problema.</strong> Analizar diariamente los mercados más eficientes del mundo exige una cantidad enorme de tiempo. Horas y horas delante de la pantalla revisando datos, comparando líneas y buscando pequeñas ineficiencias. Llegó un momento en el que el verdadero enemigo ya no era el mercado. Era el cansancio. La fatiga. El factor humano. Y a finales de 2025 terminé completamente saturado.
-                    </p>
-                    <p class="text-xl font-medium text-gray-900 dark:text-white border-l-2 border-gray-300 dark:border-gray-700 pl-4">
-                        Fue entonces cuando tomé una decisión que cambió el proyecto para siempre. En lugar de intentar trabajar más horas, decidí apoyarme en la tecnología.
-                    </p>
-                    <p>
-                        Con el auge de la inteligencia artificial, empecé a desarrollar e implementar sistemas de <em>Machine Learning</em> capaces de analizar miles de datos en segundos, detectar patrones y encontrar errores de valoración que manualmente requerían muchísimo tiempo. La idea no era que una máquina apostara por mí. <strong>La idea era utilizar la tecnología para eliminar sesgos, automatizar procesos y dedicar mi tiempo a tomar mejores decisiones.</strong>
-                    </p>
-                    <p>
-                        Los resultados no tardaron en llegar. Recuperé tiempo, mejoré la eficiencia, aumenté el volumen y conseguí encadenar cinco de cinco meses consecutivos con resultados extraordinarios. Todo ello trabajando en los mercados más líquidos y eficientes del mundo y compartiendo el proceso de forma transparente con quienes seguían mi trabajo.
-                    </p>
-                    <p>
-                        Y precisamente la palabra clave es esa: <strong>transparencia</strong>. Porque si algo he aprendido durante todos estos años es que cualquiera puede enseñar una captura de una apuesta ganada. Lo difícil es enseñar absolutamente todo. Las ganadoras. Las perdedoras. Las buenas rachas. Y también las malas. Por eso llevo un registro público y verificable de cada apuesta realizada. Sin excepciones. Sin borrar resultados. Sin seleccionar únicamente lo que interesa mostrar.
-                    </p>
-
-                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-4 flex items-center gap-3">
-                        <i class="fa-solid fa-user-ninja text-green-600 dark:text-brand-neon"></i> ¿Por qué la máscara?
-                    </h3>
-                    <p>
-                        Es una de las preguntas que más me hacen. Y la respuesta es mucho más simple de lo que la gente imagina. No llevo una máscara porque me esconda. No llevo una máscara porque haga nada ilegal. <strong>La llevo porque no busco fama.</strong>
-                    </p>
-                    <p>
-                        No quiero convertirme en un <em>influencer</em> de apuestas. No quiero reconocimiento. No quiero que me conozcan por la calle. Soy una persona normal. Tengo mi trabajo, mi familia, mi mujer y mis hijos.
-                    </p>
-                    <p>
-                        Money Tips nació con un objetivo muy sencillo: construir una fuente de ingresos basada en datos, matemáticas y disciplina que me permitiera acercarme cada vez más a la libertad financiera para mi familia. Y si durante ese camino podía ayudar a otras personas a evitar los errores que yo cometí durante años, mejor todavía.
-                    </p>
-                    <p>
-                        Aquí no encontrarás coches de lujo alquilados, capturas seleccionadas ni promesas imposibles. Aquí encontrarás trabajo, datos, inteligencia artificial, matemáticas y transparencia. Y, sobre todo, un histórico público donde cada resultado puede comprobarse.
-                    </p>
+                <div id="historia-details" class="hidden space-y-6 animate-fadeIn">
+                    <p>Ese cambio de mentalidad lo transformó todo.</p>
+                    <p>A partir de ahí comencé a registrar absolutamente todas mis apuestas y a tomar decisiones únicamente basadas en datos. Durante mi primera temporada analicé mercados de todo el mundo. No me importaba si un partido se jugaba en Europa, Asia o Sudamérica. Mi objetivo era encontrar valor allí donde apareciera.</p>
+                    <p>Aquella primera mitad de temporada terminé con un Yield cercano al 5% después de 568 apuestas (imagínate las horas dedicadas) registradas pública y gratuitamente.</p>
+                    <p><strong>No era un resultado espectacular para vender humo en redes sociales. Era mucho mejor. Era real.</strong></p>
+                    <p>Con el paso del tiempo llegaron también los problemas habituales de cualquier apostador rentable: limitaciones y cierres de cuentas. Eso me obligó a replantear mi enfoque. Decidí concentrarme en las ligas más importantes de Europa, mercados con mucha más liquidez y donde era más sencillo operar a largo plazo.</p>
+                    <p>Los resultados siguieron llegando. Hasta finales de 2025 conseguí mantener un Yield del 5,37% en mas de mil apuestas trabajando de forma completamente manual.</p>
+                    <p><strong>Pero había un problema.</strong></p>
+                    <p>Analizar diariamente los mercados más eficientes del mundo exige una cantidad enorme de tiempo. Horas y horas delante de la pantalla revisando datos, comparando líneas y buscando pequeñas ineficiencias.</p>
+                    <p class="text-xl font-medium text-gray-900 dark:text-white">Llegó un momento en el que el verdadero enemigo ya no era el mercado. Era el cansancio. La fatiga. El factor humano. Y a finales de 2025 terminé completamente saturado.</p>
+                    <p>Fue entonces cuando tomé una decisión que cambió el proyecto para siempre. En lugar de intentar trabajar más horas, <strong>decidí apoyarme en la tecnología</strong>.</p>
+                    <p>Con el auge de la inteligencia artificial, empecé a desarrollar e implementar sistemas de <em>Machine Learning</em> capaces de analizar miles de datos en segundos, detectar patrones y encontrar errores de valoración que manualmente requerían muchísimo tiempo.</p>
+                    <div class="bg-slate-50 dark:bg-brand-card/50 p-6 rounded-xl border border-gray-200 dark:border-white/5 my-6">
+                        <p class="mb-0 text-gray-900 dark:text-white font-medium">La idea no era que una máquina apostara por mí. La idea era utilizar la tecnología para eliminar sesgos, automatizar procesos y dedicar mi tiempo a tomar mejores decisiones.</p>
+                    </div>
+                    <p>Los resultados no tardaron en llegar. Recuperé tiempo, mejoré la eficiencia, aumente el volumen y conseguí encadenar cinco de cinco meses consecutivos con resultados extraordinarios. Todo ello trabajando en los mercados más líquidos y eficientes del mundo y compartiendo el proceso de forma transparente con quienes seguían mi trabajo.</p>
+                    <p>Y precisamente la palabra clave es esa: <strong>transparencia</strong>.</p>
+                    <p>Porque si algo he aprendido durante todos estos años es que cualquiera puede enseñar una captura de una apuesta ganada. Lo difícil es enseñar absolutamente todo. Las ganadoras. Las perdedoras. Las buenas rachas. Y también las malas.</p>
+                    <p>Por eso llevo un registro público y verificable de cada apuesta realizada. Sin excepciones. Sin borrar resultados. Sin seleccionar únicamente lo que interesa mostrar.</p>
                     
-                    <!-- Tarjeta Resumen Final -->
-                    <div class="mt-8 p-6 bg-slate-50 dark:bg-white/5 rounded-2xl border border-gray-200 dark:border-white/10 shadow-sm transition-colors duration-300">
-                        <p class="text-gray-900 dark:text-white font-bold mb-4 text-lg">
-                            <i class="fa-solid fa-chart-pie text-green-600 dark:text-brand-neon mr-2"></i> Los datos hablan por sí solos
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-4">¿Por qué la máscara?</h3>
+                    <p>Es una de las preguntas que más me hacen. Y la respuesta es mucho más simple de lo que la gente imagina.</p>
+                    <p>No llevo una máscara porque me esconda. No llevo una máscara porque haga nada ilegal. <strong>La llevo porque no busco fama.</strong></p>
+                    <p>No quiero convertirme en un <em>influencer</em> de apuestas. No quiero reconocimiento. No quiero que me conozcan por la calle. Soy una persona normal. Tengo mi trabajo, mi familia, mi mujer y mis hijos.</p>
+                    <p>Money Tips nació con un objetivo muy sencillo: construir una fuente de ingresos basada en datos, matemáticas y disciplina que me permitiera acercarme cada vez más a la libertad financiera para mi familia. Y si durante ese camino podía ayudar a otras personas a evitar los errores que yo cometí durante años, mejor todavía.</p>
+                    <p>Aquí no encontrarás coches de lujo alquilados, capturas seleccionadas ni promesas imposibles. Aquí encontrarás trabajo, datos, inteligencia artificial, matemáticas y transparencia. Y, sobre todo, un histórico público donde cada resultado puede comprobarse.</p>
+
+                    <!-- Tarjeta Resumen Final Métrica -->
+                    <div class="mt-12 p-8 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-[#0A1128] dark:to-brand-card rounded-2xl border border-green-200 dark:border-brand-neon/20 shadow-lg">
+                        <p class="text-gray-900 dark:text-white font-bold mb-6 text-lg text-center">
+                            Hasta la fecha, empezando con un capital inicial de 10.000€, aplicando una inversión de 170€ por apuesta y ajustando la banca al comienzo de cada temporada, he generado:
                         </p>
-                        <p class="text-base text-gray-700 dark:text-gray-300 mb-6">
-                            Hasta la fecha, empezando con un capital inicial de 10.000 euros, aplicando una <strong>inversión de 170€ por apuesta</strong> y ajustando la banca al comienzo de cada nueva temporada en función de los beneficios obtenidos en la anterior, he generado:
-                        </p>
-                        <ul class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-                            <li class="bg-white dark:bg-[#050B14] p-4 rounded-xl border border-green-200 dark:border-brand-neon/30 text-center shadow-sm">
-                                <span class="block text-2xl md:text-3xl font-black text-green-600 dark:text-brand-neon">+15.800€</span>
-                                <span class="text-xs text-gray-500 uppercase font-bold tracking-wider mt-1 block">Beneficio</span>
+                        <ul class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6">
+                            <li class="bg-white dark:bg-[#050B14] p-6 rounded-xl border border-green-200 dark:border-brand-neon/30 text-center shadow-sm">
+                                <span class="block text-3xl md:text-4xl font-black text-green-600 dark:text-brand-neon">+15.800€</span>
+                                <span class="text-xs text-gray-500 uppercase font-bold tracking-wider mt-2 block">Beneficio Acumulado</span>
                             </li>
-                            <li class="bg-white dark:bg-[#050B14] p-4 rounded-xl border border-gray-200 dark:border-white/5 text-center shadow-sm">
-                                <span class="block text-2xl md:text-3xl font-black text-gray-900 dark:text-white">+1.500</span>
-                                <span class="text-xs text-gray-500 uppercase font-bold tracking-wider mt-1 block">Picks Registrados</span>
+                            <li class="bg-white dark:bg-[#050B14] p-6 rounded-xl border border-gray-200 dark:border-white/5 text-center shadow-sm">
+                                <span class="block text-3xl md:text-4xl font-black text-gray-900 dark:text-white">+1.500</span>
+                                <span class="text-xs text-gray-500 uppercase font-bold tracking-wider mt-2 block">Picks Registrados</span>
                             </li>
-                            <li class="bg-white dark:bg-[#050B14] p-4 rounded-xl border border-gray-200 dark:border-white/5 text-center shadow-sm">
-                                <span class="block text-2xl md:text-3xl font-black text-gray-900 dark:text-white">> 6%</span>
-                                <span class="text-xs text-gray-500 uppercase font-bold tracking-wider mt-1 block">Yield</span>
+                            <li class="bg-white dark:bg-[#050B14] p-6 rounded-xl border border-gray-200 dark:border-white/5 text-center shadow-sm">
+                                <span class="block text-3xl md:text-4xl font-black text-gray-900 dark:text-white">> 6%</span>
+                                <span class="text-xs text-gray-500 uppercase font-bold tracking-wider mt-2 block">Yield Sostenido</span>
                             </li>
                         </ul>
-                        <p class="text-sm font-medium text-gray-600 dark:text-gray-400">
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-300 text-center">
                             Y lo más importante no es la cifra. Lo más importante es que <strong>cada una de esas apuestas, sin excepción, está visible en el histórico</strong> para que cualquiera pueda comprobarla por sí mismo.
                         </p>
                     </div>
@@ -463,36 +401,110 @@
         </div>
     </section>
 
-    <!-- ECOSISTEMA (MATCHED PRO) -->
-    <section id="ecosistema" class="py-20 bg-white dark:bg-brand-card border-y border-gray-200 dark:border-white/5 transition-colors duration-300">
+    <!-- NUEVA SECCIÓN: HERRAMIENTAS / MONEYTRACKING -->
+    <section id="herramientas" class="py-20 bg-white dark:bg-brand-card transition-colors duration-300 border-b border-gray-200 dark:border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center justify-between bg-slate-50 dark:bg-gradient-to-r dark:from-[#050B14] dark:to-brand-card p-8 md:p-12 rounded-3xl border border-gray-200 dark:border-brand-neon/20 shadow-md dark:shadow-glass transition-colors duration-300">
-                <div class="md:w-2/3 mb-8 md:mb-0 md:pr-12">
-                    <div class="inline-block bg-blue-100 dark:bg-brand-neon/10 text-blue-800 dark:text-brand-neon px-3 py-1 rounded text-xs font-bold uppercase tracking-wider mb-4 border border-blue-200 dark:border-transparent">
-                        Servicio Boutique Exclusivo (1 a 1)
-                    </div>
-                    <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Money Matched Pro</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                        ¿Quieres extraer dinero del mercado sin asumir <strong>absolutamente ningún riesgo</strong>? Hemos desarrollado nuestra propia calculadora inteligente y tracker para Matched Betting.
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <!-- Text Content -->
+                <div class="w-full lg:w-1/2">
+                    <span class="text-green-600 dark:text-brand-neon font-bold tracking-widest uppercase text-xs mb-2 block">Software Propio</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">MoneyTracKING <i class="fa-solid fa-crown text-yellow-500 ml-2"></i></h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                        Los tipsters tradicionales te dan un Excel básico para que apuntes tus apuestas. Nosotros hemos desarrollado <strong>nuestra propia aplicación profesional</strong> para que lleves el control absoluto de tus inversiones.
                     </p>
-                    <p class="text-gray-500 dark:text-gray-400 text-sm">
-                        Debido a la alta rentabilidad matemática y al acompañamiento personal que requiere este proceso, este servicio es exclusivo, con plazas muy limitadas y no está disponible públicamente en la web.
-                    </p>
-                </div>
-                <div class="md:w-1/3 flex justify-center md:justify-end">
-                    <a href="https://t.me/Money_Tips_Asistencia" target="_blank" class="px-8 py-4 bg-white dark:bg-transparent border border-gray-300 dark:border-white/20 hover:border-green-500 dark:hover:border-brand-neon hover:bg-slate-50 dark:hover:bg-brand-neon/10 text-gray-900 dark:text-white font-bold rounded-xl transition-all shadow-sm text-center flex flex-col items-center gap-2 w-full md:w-auto">
-                        <i class="fa-brands fa-telegram text-3xl text-blue-500 dark:text-brand-neon mb-1"></i>
-                        <span>Consultar Plazas Matched Pro</span>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 dark:bg-brand-neon/20 flex items-center justify-center mt-1 mr-3">
+                                <i class="fa-solid fa-check text-green-600 dark:text-brand-neon text-xs"></i>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300"><strong>Gratuita para usuarios Premium:</strong> Registra las apuestas de Money Tips o las de cualquier otro sistema que sigas.</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 dark:bg-brand-neon/20 flex items-center justify-center mt-1 mr-3">
+                                <i class="fa-solid fa-check text-green-600 dark:text-brand-neon text-xs"></i>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300"><strong>Límites Profesionales:</strong> Gestiona hasta 5 bancas independientes y registra hasta 1.000 apuestas por banca.</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 dark:bg-brand-neon/20 flex items-center justify-center mt-1 mr-3">
+                                <i class="fa-solid fa-check text-green-600 dark:text-brand-neon text-xs"></i>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300"><strong>Escáner Inteligente (IA):</strong> 10 escaneos gratuitos al mes. Sube la captura de tu boleto y la app rellena los datos por ti.</p>
+                        </li>
+                    </ul>
+                    
+                    <a href="moneytracking.html" class="inline-flex items-center font-bold text-gray-900 dark:text-white hover:text-green-600 dark:hover:text-brand-neon transition-colors group">
+                        Descubrir todas las funciones de la App <i class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
                     </a>
+                </div>
+                
+                <!-- Mockup Visual -->
+                <div class="w-full lg:w-1/2 flex justify-center">
+                    <div class="relative w-full max-w-sm">
+                        <!-- Glow -->
+                        <div class="absolute inset-0 bg-blue-500 dark:bg-brand-neon opacity-20 blur-2xl rounded-full"></div>
+                        <!-- UI Mockup -->
+                        <div class="relative bg-slate-50 dark:bg-[#050B14] border border-gray-200 dark:border-white/10 rounded-3xl p-6 shadow-2xl">
+                            <div class="flex justify-between items-center mb-6 pb-4 border-b border-gray-200 dark:border-white/5">
+                                <span class="font-bold text-gray-900 dark:text-white"><i class="fa-solid fa-chart-pie text-green-500 mr-2"></i> Dashboard</span>
+                                <span class="text-xs bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-1 rounded">Banca Principal</span>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="h-8 bg-gray-200 dark:bg-gray-800 rounded w-3/4"></div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="h-20 bg-gray-200 dark:bg-gray-800 rounded-xl"></div>
+                                    <div class="h-20 bg-gray-200 dark:bg-gray-800 rounded-xl"></div>
+                                </div>
+                                <div class="h-32 bg-green-100 dark:bg-brand-neon/10 border border-green-200 dark:border-brand-neon/30 rounded-xl flex items-center justify-center">
+                                    <i class="fa-solid fa-camera text-3xl text-green-500 dark:text-brand-neon opacity-50"></i>
+                                </div>
+                                <div class="h-10 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-xl flex items-center justify-center font-bold text-sm">Escanear Boleto</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ecosistema" class="py-24 bg-slate-100 dark:bg-[#050B14] transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black dark:from-[#0A1128] dark:via-brand-dark dark:to-black rounded-3xl p-1">
+                <!-- Borde animado VIP -->
+                <div class="absolute inset-0 bg-gradient-to-r from-yellow-600 via-yellow-300 to-yellow-600 rounded-3xl opacity-50"></div>
+                
+                <div class="relative bg-gray-900 dark:bg-[#050B14] rounded-[23px] p-8 md:p-14 overflow-hidden flex flex-col md:flex-row items-center justify-between z-10 shadow-gold">
+                    
+                    <!-- Glow dorado interior -->
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-yellow-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <div class="md:w-2/3 mb-8 md:mb-0 md:pr-12 relative z-10">
+                        <div class="inline-flex items-center gap-2 bg-yellow-500/10 text-yellow-500 border border-yellow-500/30 px-3 py-1 rounded text-xs font-bold uppercase tracking-wider mb-6 shadow-sm">
+                            <i class="fa-solid fa-gem"></i> Servicio Boutique Exclusivo (1 a 1)
+                        </div>
+                        <h3 class="text-3xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">Money Matched <span class="gold-gradient">Pro</span></h3>
+                        <p class="text-gray-300 text-lg mb-6 leading-relaxed">
+                            ¿Quieres extraer dinero del mercado sin asumir <strong>absolutamente ningún riesgo</strong>? Hemos desarrollado nuestra propia calculadora inteligente y tracker para arbitraje de apuestas (Matched Betting).
+                        </p>
+                        <p class="text-gray-400 text-sm border-l-2 border-yellow-500/50 pl-4 py-1">
+                            Debido a la alta rentabilidad matemática y al acompañamiento personal que requiere este proceso, este servicio es exclusivo, con plazas muy limitadas y no está disponible públicamente en la web.
+                        </p>
+                    </div>
+                    
+                    <div class="md:w-1/3 flex justify-center md:justify-end relative z-10 w-full">
+                        <a href="https://t.me/Money_Tips_Asistencia" target="_blank" class="w-full md:w-auto px-8 py-5 bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-gray-900 font-extrabold rounded-xl transition-all shadow-gold hover:shadow-gold-strong text-center flex flex-col items-center gap-2 transform hover:-translate-y-1">
+                            <i class="fa-brands fa-telegram text-2xl mb-1"></i>
+                            <span>Consultar Plazas</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- PREMIUM SECTION (PLAZAS CERRADAS) -->
-    <section id="premium" class="py-24 bg-brand-lightBg dark:bg-[#050B14] relative overflow-hidden transition-colors duration-300">
-        <div class="hidden dark:block absolute top-0 right-0 w-[600px] h-[600px] bg-brand-neon/5 rounded-full blur-3xl pointer-events-none"></div>
-
+    <section id="premium" class="py-24 bg-white dark:bg-brand-card relative overflow-hidden transition-colors duration-300 border-y border-gray-200 dark:border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
                 <span class="text-green-600 dark:text-brand-neon font-bold tracking-widest uppercase text-xs mb-2 block">El valor de la información</span>
@@ -502,26 +514,26 @@
 
             <div class="flex justify-center">
                 <!-- Plan Principal (Cerrado por FOMO) -->
-                <div class="bg-white dark:bg-brand-card rounded-3xl p-8 border border-gray-200 dark:border-gray-700 flex flex-col relative w-full max-w-md shadow-xl transition-colors duration-300 overflow-hidden">
+                <div class="bg-slate-50 dark:bg-[#050B14] rounded-3xl p-8 border border-gray-200 dark:border-gray-700 flex flex-col relative w-full max-w-md shadow-xl transition-colors duration-300 overflow-hidden">
                     
                     <!-- Capa de bloqueo Plazas Cerradas -->
-                    <div class="absolute inset-0 bg-slate-900/40 dark:bg-black/40 backdrop-blur-[2px] z-10 flex flex-col items-center justify-center rounded-3xl pointer-events-auto">
+                    <div class="absolute inset-0 bg-slate-900/50 dark:bg-black/60 backdrop-blur-[3px] z-10 flex flex-col items-center justify-center rounded-3xl">
                         <div class="bg-red-600 text-white px-6 py-2 rounded-full font-bold text-sm uppercase tracking-wider mb-4 shadow-lg flex items-center gap-2">
                             <i class="fa-solid fa-lock"></i> Plazas Cerradas
                         </div>
                         <p class="text-white text-center px-6 font-medium text-sm drop-shadow-md">
-                            El servicio de pago está temporalmente cerrado. Únete al canal gratuito para recibir notificaciones y alertas libres.
+                            El servicio de pago está temporalmente cerrado. Únete al canal gratuito para recibir notificaciones y alertas libres de la IA.
                         </p>
-                        <a href="https://t.me/canalmoneytips" target="_blank" class="mt-6 px-6 py-2 bg-green-500 dark:bg-brand-neon text-white dark:text-brand-dark font-bold rounded-lg hover:bg-green-600 dark:hover:bg-white transition-colors flex items-center gap-2 shadow-lg">
-                            <i class="fa-brands fa-telegram"></i> Canal Gratuito
+                        <a href="https://t.me/canalmoneytips" target="_blank" class="mt-6 px-6 py-3 bg-brand-neon text-gray-900 font-extrabold rounded-xl hover:bg-green-400 transition-colors flex items-center gap-2 shadow-neon transform hover:scale-105">
+                            <i class="fa-brands fa-telegram text-lg"></i> Canal Gratuito
                         </a>
                     </div>
 
-                    <div class="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 font-black text-center text-xs py-2 rounded-t-xl uppercase tracking-wider absolute top-0 left-0 right-0 transition-colors">
+                    <div class="bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-300 font-black text-center text-xs py-2 rounded-t-xl uppercase tracking-wider absolute top-0 left-0 right-0 transition-colors">
                         Acceso Total
                     </div>
                     
-                    <div class="mt-8 blur-[2px] select-none pointer-events-none">
+                    <div class="mt-8 blur-[2px]">
                         <div class="text-5xl font-extrabold text-gray-900 dark:text-white mb-4 text-center">39€ <span class="text-lg font-normal text-gray-500">/ mes</span></div>
                         <p class="text-sm text-gray-500 dark:text-gray-400 mb-8 pb-6 border-b border-gray-200 dark:border-white/10 text-center">Inversión matemática a largo plazo. Sin permanencia.</p>
                         
@@ -532,7 +544,7 @@
                             <li class="flex items-start"><i class="fa-solid fa-check text-gray-400 dark:text-gray-500 mt-1 mr-3"></i> Transparencia total en Money TracKING</li>
                         </ul>
 
-                        <div class="w-full py-4 bg-gray-200 dark:bg-gray-700 text-gray-400 font-extrabold rounded-xl text-center text-lg uppercase tracking-wide block">
+                        <div class="w-full py-4 bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-400 font-extrabold rounded-xl text-center text-lg uppercase tracking-wide block">
                             Suscribirse Ahora
                         </div>
                     </div>
@@ -548,14 +560,14 @@
                 <div class="lg:col-span-1">
                     <div class="flex items-center gap-2 mb-4">
                         <img src="favicon.png" alt="Logo" class="w-8 h-8 opacity-80">
-                        <span class="font-bold text-3xl tracking-tight text-[#22C55E] dark:text-[#00F59B]">Money<span class="text-[#51E3A2] dark:text-[#51E3A2]">Tips</span></span>
+                        <span class="font-bold text-3xl tracking-tight text-gray-900 dark:text-white">Money<span class="text-green-600 dark:text-brand-neon">Tips</span></span>
                     </div>
                     <p class="text-gray-600 dark:text-gray-500 text-sm leading-relaxed mb-6">
                         Infraestructura tecnológica para la inversión deportiva. Cero intuición, puras matemáticas.
                     </p>
                     <div class="flex gap-4">
                         <a href="https://t.me/canalmoneytips" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-brand-card flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-green-100 hover:text-green-700 dark:hover:bg-brand-neon dark:hover:text-brand-dark transition-all"><i class="fa-brands fa-telegram"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-brand-card flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-red-100 hover:text-red-600 dark:hover:bg-brand-neon dark:hover:text-brand-dark transition-all"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://youtube.com/@moneytipsoficial?si=hJXpdAGxHUukwsgX" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-brand-card flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-red-100 hover:text-red-600 dark:hover:bg-brand-neon dark:hover:text-brand-dark transition-all"><i class="fa-brands fa-youtube"></i></a>
                         <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-brand-card flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-brand-neon dark:hover:text-brand-dark transition-all"><i class="fa-brands fa-x-twitter"></i></a>
                     </div>
                 </div>
@@ -567,6 +579,7 @@
                         <li><a href="#inicio" class="hover:text-green-600 dark:hover:text-brand-neon transition-colors">Método</a></li>
                         <li><a href="#estadisticas" class="hover:text-green-600 dark:hover:text-brand-neon transition-colors">Histórico Oficial</a></li>
                         <li><a href="#historia" class="hover:text-green-600 dark:hover:text-brand-neon transition-colors">Sobre Mí</a></li>
+                        <li><a href="#herramientas" class="hover:text-green-600 dark:hover:text-brand-neon transition-colors">Herramientas</a></li>
                         <li><a href="https://pronosticosmoneytips.com/blog.html" class="hover:text-green-600 dark:hover:text-brand-neon transition-colors">Blog de Inversión</a></li>
                     </ul>
                 </div>
@@ -581,15 +594,24 @@
                     </ul>
                 </div>
 
-                <!-- Newsletter Formulario -->
+                <!-- Newsletter Formulario FormSubmit -->
                 <div class="lg:col-span-1">
                     <h4 class="text-gray-900 dark:text-white font-bold mb-4 text-sm uppercase tracking-wider">Newsletter Privada</h4>
-                    <p class="text-xs text-gray-500 dark:text-gray-400 mb-4">Déjanos tu correo y usuario de Telegram para recibir avisos de apertura de plazas y contenido educativo exclusivo.</p>
-                    <form class="space-y-3" onsubmit="event.preventDefault(); alert('¡Suscripción recibida! Pronto tendrás noticias nuestras.');">
-                        <input type="email" placeholder="Tu correo electrónico" required class="w-full bg-slate-50 dark:bg-[#050B14] border border-gray-300 dark:border-white/10 rounded-lg px-4 py-2 text-sm text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-green-500 dark:focus:border-brand-neon transition-colors">
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mb-4">Déjanos tu correo y usuario de Telegram para recibir avisos de apertura de plazas.</p>
+                    
+                    <!-- Formulario real conectado a tu correo -->
+                    <!-- Cuando hagas el primer envío, revisa el mail. Formsubmit te dará un string para sustituir tu correo visible aquí -->
+                    <form action="https://formsubmit.co/apuestashappy@gmail.com" method="POST" class="space-y-3">
+                        <!-- Configuraciones ocultas de FormSubmit -->
+                        <input type="hidden" name="_subject" value="Nuevo Lead - Newsletter Money Tips!">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_next" value="https://pronosticosmoneytips.com/"> <!-- Cambiar a una página de gracias si la tienes -->
+
+                        <input type="email" name="email" placeholder="Tu correo electrónico" required class="w-full bg-slate-50 dark:bg-[#050B14] border border-gray-300 dark:border-white/10 rounded-lg px-4 py-2 text-sm text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-green-500 dark:focus:border-brand-neon transition-colors">
                         <div class="relative">
                             <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 dark:text-gray-500 text-sm">@</span>
-                            <input type="text" placeholder="Usuario de Telegram" required class="w-full bg-slate-50 dark:bg-[#050B14] border border-gray-300 dark:border-white/10 rounded-lg pl-8 pr-4 py-2 text-sm text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-green-500 dark:focus:border-brand-neon transition-colors">
+                            <input type="text" name="Telegram_User" placeholder="Usuario de Telegram" required class="w-full bg-slate-50 dark:bg-[#050B14] border border-gray-300 dark:border-white/10 rounded-lg pl-8 pr-4 py-2 text-sm text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-green-500 dark:focus:border-brand-neon transition-colors">
                         </div>
                         <button type="submit" class="w-full bg-green-500 dark:bg-brand-neon hover:bg-green-600 dark:hover:bg-white text-white dark:text-brand-dark font-bold text-sm py-2.5 rounded-lg transition-colors shadow-sm dark:shadow-neon">
                             Inscribirme
@@ -609,7 +631,7 @@
         </div>
     </footer>
 
-    <!-- Modal Aviso Legal -->
+    <!-- Modales -->
     <div id="modal-legal" class="custom-modal fixed inset-0 flex items-center justify-center bg-gray-900/80 dark:bg-black/90 backdrop-blur-sm p-4">
         <div class="bg-white dark:bg-brand-card border border-gray-200 dark:border-white/10 rounded-2xl w-full max-w-3xl relative shadow-2xl max-h-[90vh] flex flex-col">
              <div class="bg-slate-50 dark:bg-[#050B14] p-4 flex justify-between items-center border-b border-gray-200 dark:border-white/10 shrink-0 rounded-t-2xl">
@@ -624,39 +646,32 @@
                 <p>El acceso y/o uso de este portal de Money Tips atribuye la condición de USUARIO, que acepta, desde dicho acceso y/o uso, las Condiciones Generales de Uso aquí reflejadas. El portal es estrictamente para mayores de 18 años (+18).</p>
 
                 <h4 class="text-gray-900 dark:text-white font-bold mt-4">3. Exención de Responsabilidad</h4>
-                <p>La información, pronósticos y herramientas (Money TracKING, Money Matched Pro) proporcionadas en este sitio web tienen fines meramente informativos y estadísticos. Las apuestas deportivas conllevan un alto nivel de riesgo. Money Tips no garantiza beneficios futuros basándose en resultados pasados. El usuario es el único responsable de las decisiones financieras y de inversión que tome, eximiendo a Money Tips de cualquier responsabilidad por pérdidas económicas.</p>
+                <p>La información, pronósticos y herramientas proporcionadas tienen fines meramente informativos y estadísticos. Las apuestas deportivas conllevan un alto nivel de riesgo.</p>
             </div>
             <div class="p-4 border-t border-gray-200 dark:border-white/10 bg-slate-50 dark:bg-[#050B14] shrink-0 rounded-b-2xl text-right">
-                <button onclick="toggleModal('modal-legal')" class="px-6 py-2 bg-green-500 dark:bg-brand-neon text-white dark:text-brand-dark font-bold rounded hover:bg-green-600 dark:hover:bg-white transition-colors">Cerrar</button>
+                <button onclick="toggleModal('modal-legal')" class="px-6 py-2 bg-green-500 dark:bg-brand-neon text-white dark:text-brand-dark font-bold rounded-lg hover:bg-green-600 dark:hover:bg-white transition-colors">Cerrar</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal Privacidad -->
     <div id="modal-privacidad" class="custom-modal fixed inset-0 flex items-center justify-center bg-gray-900/80 dark:bg-black/90 backdrop-blur-sm p-4">
         <div class="bg-white dark:bg-brand-card border border-gray-200 dark:border-white/10 rounded-2xl w-full max-w-3xl relative shadow-2xl max-h-[90vh] flex flex-col">
              <div class="bg-slate-50 dark:bg-[#050B14] p-4 flex justify-between items-center border-b border-gray-200 dark:border-white/10 shrink-0 rounded-t-2xl">
-                <h3 class="text-lg font-bold text-gray-900 dark:text-white"><i class="fa-solid fa-shield-halved text-green-600 dark:text-brand-neon mr-2"></i> Política de Privacidad y Cookies</h3>
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white"><i class="fa-solid fa-shield-halved text-green-600 dark:text-brand-neon mr-2"></i> Política de Privacidad</h3>
                 <button onclick="toggleModal('modal-privacidad')" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"><i class="fa-solid fa-xmark text-xl"></i></button>
             </div>
             <div class="p-6 overflow-y-auto text-sm text-gray-600 dark:text-gray-400 space-y-4">
                 <h4 class="text-gray-900 dark:text-white font-bold">Protección de Datos</h4>
-                <p>Money Tips cumple con las directrices del Reglamento General de Protección de Datos (RGPD). Los datos recabados a través de la newsletter (email y usuario de Telegram) serán utilizados única y exclusivamente para enviar información relativa a nuestros servicios de inversión, novedades y apertura de plazas.</p>
-                
-                <h4 class="text-gray-900 dark:text-white font-bold mt-4">No cesión a terceros</h4>
-                <p>En ningún caso tus datos serán vendidos, cedidos o alquilados a terceras empresas. Tu privacidad está garantizada en nuestra base de datos segura.</p>
-
-                <h4 class="text-gray-900 dark:text-white font-bold mt-4">Uso de Cookies</h4>
-                <p>Este sitio web utiliza cookies técnicas necesarias para el correcto funcionamiento de la página, la navegación por pestañas (Iframes) y la gestión del estado de aceptación de banners. No utilizamos cookies de rastreo invasivo de terceros.</p>
+                <p>Money Tips cumple con las directrices del Reglamento General de Protección de Datos (RGPD). Los datos recabados a través de la newsletter serán utilizados única y exclusivamente para enviar información relativa a nuestros servicios.</p>
             </div>
             <div class="p-4 border-t border-gray-200 dark:border-white/10 bg-slate-50 dark:bg-[#050B14] shrink-0 rounded-b-2xl text-right">
-                <button onclick="toggleModal('modal-privacidad')" class="px-6 py-2 bg-green-500 dark:bg-brand-neon text-white dark:text-brand-dark font-bold rounded hover:bg-green-600 dark:hover:bg-white transition-colors">Entendido</button>
+                <button onclick="toggleModal('modal-privacidad')" class="px-6 py-2 bg-green-500 dark:bg-brand-neon text-white dark:text-brand-dark font-bold rounded-lg hover:bg-green-600 dark:hover:bg-white transition-colors">Entendido</button>
             </div>
         </div>
     </div>
 
+    <!-- SCRIPTS -->
     <script>
-        // Lógica del Theme Toggle (Modo Claro/Oscuro)
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -665,7 +680,6 @@
         const themeToggleDarkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
         const themeToggleLightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
 
-        // Función para actualizar iconos basada en el estado actual
         function updateThemeIcons() {
             if (document.documentElement.classList.contains('dark')) {
                 themeToggleLightIcon.classList.remove('hidden');
@@ -680,18 +694,14 @@
             }
         }
 
-        // Inicializar iconos
         updateThemeIcons();
 
-        // Función para manejar el clic del toggle
         function handleThemeToggle() {
-            // toggle icons
             themeToggleDarkIcon.classList.toggle('hidden');
             themeToggleLightIcon.classList.toggle('hidden');
             themeToggleDarkIconMobile.classList.toggle('hidden');
             themeToggleLightIconMobile.classList.toggle('hidden');
 
-            // if set via local storage previously
             if (localStorage.getItem('color-theme')) {
                 if (localStorage.getItem('color-theme') === 'light') {
                     document.documentElement.classList.add('dark');
@@ -700,7 +710,6 @@
                     document.documentElement.classList.remove('dark');
                     localStorage.setItem('color-theme', 'light');
                 }
-            // if NOT set via local storage previously
             } else {
                 if (document.documentElement.classList.contains('dark')) {
                     document.documentElement.classList.remove('dark');
@@ -715,7 +724,6 @@
         themeToggleBtn.addEventListener('click', handleThemeToggle);
         themeToggleBtnMobile.addEventListener('click', handleThemeToggle);
 
-        // Modal toggler global
         function toggleModal(modalId) {
             const modal = document.getElementById(modalId);
             if (modal.classList.contains('active')) {
@@ -727,17 +735,14 @@
             }
         }
 
-        // Logic for Iframes Tabs
         function showIframe(id) {
             const tabs = ['global', 't2526', 't2425', 't2324'];
-            
             tabs.forEach(tab => {
                 const iframeContainer = document.getElementById('iframe-' + tab);
                 iframeContainer.classList.remove('opacity-100', 'pointer-events-auto', 'z-10');
                 iframeContainer.classList.add('opacity-0', 'pointer-events-none', 'z-0');
                 
                 const btn = document.getElementById('btn-' + tab);
-                // Limpiar clases activas tanto de modo claro como oscuro
                 btn.classList.remove('text-green-600', 'dark:text-brand-neon', 'border-green-500', 'dark:border-brand-neon', 'bg-white', 'dark:bg-white/5', 'font-bold');
                 btn.classList.add('text-gray-500', 'dark:text-gray-400', 'border-transparent', 'font-semibold');
             });
@@ -751,32 +756,28 @@
             activeBtn.classList.add('text-green-600', 'dark:text-brand-neon', 'border-green-500', 'dark:border-brand-neon', 'bg-white', 'dark:bg-white/5', 'font-bold');
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            showIframe('global');
-        });
-
-        // Lógica para desplegar la Historia
         function toggleHistoria(btn) {
             const content = document.getElementById('historia-details');
             const icon = btn.querySelector('i.fa-solid');
             const textSpan = btn.querySelector('.btn-text');
 
             if (content.classList.contains('hidden')) {
-                // Abrir
                 content.classList.remove('hidden');
                 textSpan.textContent = 'Mostrar menos';
                 icon.classList.remove('fa-chevron-down');
                 icon.classList.add('fa-chevron-up');
             } else {
-                // Cerrar
                 content.classList.add('hidden');
                 textSpan.textContent = 'Leer mi historia completa';
                 icon.classList.remove('fa-chevron-up');
                 icon.classList.add('fa-chevron-down');
-                // Scroll suave de vuelta al inicio de la sección para no perder al usuario
                 document.getElementById('historia').scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showIframe('global');
+        });
     </script>
 </body>
 </html>
